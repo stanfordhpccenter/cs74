@@ -45,14 +45,10 @@ The key's randomart image is:
 
 **2: Copy the SSH Public Key to the Server - For Windows Users ONLY **
 
-Run the following (in one line), replacing [username] with your HPCC username, which we provide:
 
-```
-cat ~/.ssh/id_rsa.pub | ssh [username]@hpcc-cluster.stanford.edu "mkdir -p ~/.ssh && cat >> ~/.ssh/authorized_keys"
-```
 **REQUIRED for Windows account names containing whitespace:**
 
-Revise the last string of your public key **before** this step
+Revise the last string of your public key **before** copying your public key to the remote server.
 
 Example _"User Name"_ ~ The last line of the public key will state:
 ```
@@ -63,7 +59,13 @@ Revise this adding quotation marks:
 "User Name@[laptop-local-address]"
 ```
 
-You will see a warning like this:
+Run the following (in one line), replacing [username] with your HPCC username, which we're providing. This sends a copy of your public key to the remote server:
+
+```
+cat ~/.ssh/id_rsa.pub | ssh [username]@hpcc-cluster.stanford.edu "mkdir -p ~/.ssh && cat >> ~/.ssh/authorized_keys"
+```
+
+After you copy the SSH public key to the server, you will see a warning like this:
 ```
 The authenticity of host 'hpcc-cluster.stanford.edu (171.64.55.130)' can't be established.
 ECDSA key fingerprint is SHA256:20rcvjngfjkrjjank45436tkjfhsdkfsdHjosfjJhk.
