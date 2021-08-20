@@ -100,3 +100,9 @@ _ssh-copy-id [username]@hpcc-cluster.stanford.edu_
 ```
 
 You will get a warning like this:
+```
+/usr/bin/ssh-copy-id: INFO: Source of key(s) to be installed: "/home/kali/.ssh/id_rsa.pub"
+The authenticity of host 'hpcc-cluster.stanford.edu (171.64.55.130)' can't be established.
+ECDSA key fingerprint is SHE2566:20crZ5XWQNxMgW0BZo3mE97j7z2ThNoULDzVeUAVeCg.
+Are you sure you want to continue connecting (yes/no/[fingerprint])?
+```
