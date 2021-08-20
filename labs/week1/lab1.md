@@ -43,6 +43,8 @@ The key's randomart image is:
 +----[SHA256]-----+
 ```
 
+
+
 **2: Copy the SSH Public Key to the Server - For Windows Users ONLY**
 
 **REQUIRED only for Windows account names containing whitespace:**
@@ -87,6 +89,8 @@ user@hpcc-cluster.stanford.edu's password:
 
 You likely won't receive a response after entering the password.
 
+
+
 **2: Copy the SSH Public Key to the Server - For MacOS & Linux Users ONLY**
 
 Run the following, replacing [username] with your HPCC username, which we're providing:
@@ -125,6 +129,8 @@ You'll receive a response like this:
 ```
 Number of key(s) added: 1
 ```
+
+
 
 **3: Test SSH Key Authentication**
 
