@@ -112,8 +112,10 @@ Are you sure you want to continue connecting (yes/no/[fingerprint]) yes?
 
 You'll receive a response like this:
 ```
-/usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed
-/usr/bin/ssh-copy-id: INFO: 1 key(s) remain to be installed -- if you are prompted now it is to install new keys
+/usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter
+out any that are already installed
+/usr/bin/ssh-copy-id: INFO: 1 key(s) remain to be installed -- if you are
+prompted now it is to install new keys
 ```
 
 You'll be prompted for your HPCC password, which we're providing.
