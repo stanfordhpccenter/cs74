@@ -1,4 +1,4 @@
-1. Create an SSH Key Pair
+**1. Create an SSH Key Pair **
 
 On your local computer, start MacOS Terminal, Windows PowerShell, or your Linux terminal of choice.
 
@@ -42,3 +42,57 @@ The key's randomart image is:
 |@+o.o            |
 +----[SHA256]-----+
 ```
+
+**2: Copy the SSH Public Key to the Server - For Windows Users ONLY **
+
+Run the following (in one line), replacing [username] with your HPCC username, which we provide:
+
+```
+cat ~/.ssh/id_rsa.pub | ssh [username]@hpcc-cluster.stanford.edu "mkdir -p ~/.ssh && cat >> ~/.ssh/authorized_keys"
+```
+**REQUIRED for Windows account names containing whitespace:**
+
+Revise the last string of your public key **before** this step
+
+Example _"User Name"_ ~ The last line of the public key will state:
+```
+User Name@[laptop-local-address]
+```
+Revise this adding quotation marks:
+```
+"User Name@[laptop-local-address]"
+```
+
+You will see a warning like this:
+```
+The authenticity of host 'hpcc-cluster.stanford.edu (171.64.55.130)' can't be established.
+ECDSA key fingerprint is SHA256:20rcvjngfjkrjjank45436tkjfhsdkfsdHjosfjJhk.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+```
+
+Type _yes_ and press the enter key.
+
+You'll receive a response like this:
+```
+Warning: Permanently added 'hpcc-cluster.stanford.edu,171.64.55.130' (ECDSA) to the list of known hosts.
+```
+
+You'll be prompted for your HPCC password, which we provide.
+Type your password and press enter
+**NOTE** Your keystrokes will not appear on the screen.
+```
+user@hpcc-cluster.stanford.edu's password:
+```
+
+You likely won't receive a response after entering the password.
+
+**2: Copy the SSH Public Key to the Server - For MacOS & Linux Users ONLY**
+
+Run the following, replacing [username] with your HPCC username, which we're providing:
+
+_ssh-copy-id [username]@hpcc-cluster.stanford.edu_
+```
+~$ ssh-copy-id david@hpcc-cluster.stanford.edu
+```
+
+You will get a warning like this:
