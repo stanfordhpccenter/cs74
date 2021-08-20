@@ -81,8 +81,8 @@ You'll receive a response like this:
 Warning: Permanently added 'hpcc-cluster.stanford.edu,171.64.55.130' (ECDSA) to the list of known hosts.
 ```
 
-You'll be prompted for your HPCC password, which we provide.
-Type your password and press enter
+You'll be prompted for your HPCC password, which we're providing.
+Type your password and press enter.
 **NOTE** Your keystrokes will not appear on the screen.
 ```
 user@hpcc-cluster.stanford.edu's password:
@@ -99,10 +99,35 @@ _ssh-copy-id [username]@hpcc-cluster.stanford.edu_
 ~$ ssh-copy-id david@hpcc-cluster.stanford.edu
 ```
 
-You will get a warning like this:
+You will get a warning like this. If you entered the server address correctly, you're fine.
+Type _yes_ and press the enter key.
+
 ```
 /usr/bin/ssh-copy-id: INFO: Source of key(s) to be installed: "/home/kali/.ssh/id_rsa.pub"
 The authenticity of host 'hpcc-cluster.stanford.edu (171.64.55.130)' can't be established.
-ECDSA key fingerprint is SHE2566:20crZ5XWQNxMgW0BZo3mE97j7z2ThNoULDzVeUAVeCg.
-Are you sure you want to continue connecting (yes/no/[fingerprint])?
+ECDSA key fingerprint is SHA256:20crZ5XWQNxMgW0BZo3mE97j7z2ThNoULDzVeUAVeCg.
+Are you sure you want to continue connecting (yes/no/[fingerprint]) yes?
 ```
+
+You'll receive a response like this:
+```
+/usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed
+/usr/bin/ssh-copy-id: INFO: 1 key(s) remain to be installed -- if you are prompted now it is to install new keys
+```
+
+You'll be prompted for your HPCC password, which we're providing.
+Type your password and press enter.
+Note: Your keystrokes will not appear on the screen.
+
+```
+davidron@hpcc-cluster.stanford.edu's password:
+```
+
+You'll receive a response like this:
+```
+Number of key(s) added: 1
+
+Now try logging into the machine, with: "ssh 'davidron@hpcc-cluster.stanford.edu' "
+and check to make sure that only the key(s) you wanted were added.
+```
+
