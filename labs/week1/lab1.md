@@ -47,18 +47,19 @@ The key's randomart image is:
 
 ----
 
-**REQUIRED for Windows account names containing whitespace:**
+**REQUIRED only for Windows account names containing whitespace:**
 
 Revise the last string of your public key **before** copying your public key to the remote server.
 
-Example _"User Name"_ ~ The last line of the public key will state:
+For example, if your user name is _"User Name"_, the last line of the public key will state:
 ```
 User Name@[laptop-local-address]
 ```
-Revise this adding quotation marks:
+Revise this by adding quotation marks:
 ```
 "User Name@[laptop-local-address]"
 ```
+
 ----
 
 Run the following (in one line), replacing [username] with your HPCC username, which we're providing. This sends a copy of your public key to the remote server:
