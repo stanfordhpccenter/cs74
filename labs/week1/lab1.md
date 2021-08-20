@@ -42,8 +42,7 @@ The key's randomart image is:
 |@+o.o            |
 +----[SHA256]-----+
 ```
-
-
+----
 
 **2: Copy the SSH Public Key to the Server - For Windows Users ONLY**
 
@@ -89,7 +88,7 @@ user@hpcc-cluster.stanford.edu's password:
 
 You likely won't receive a response after entering the password.
 
-
+----
 
 **2: Copy the SSH Public Key to the Server - For MacOS & Linux Users ONLY**
 
@@ -130,7 +129,7 @@ You'll receive a response like this:
 Number of key(s) added: 1
 ```
 
-
+----
 
 **3: Test SSH Key Authentication**
 
