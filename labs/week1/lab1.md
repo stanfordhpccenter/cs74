@@ -95,13 +95,13 @@ You likely won't receive a response after entering the password.
 
 Run the following, replacing [username] with your HPCC username, which we're providing:
 
-_ssh-copy-id [username]@hpcc-cluster.stanford.edu_
+ssh-copy-id [username]@hpcc-cluster.stanford.edu
 ```
 ~$ ssh-copy-id david@hpcc-cluster.stanford.edu
 ```
 
 You will get a warning like this. If you entered the server address correctly, you're fine.
-Type _yes_ and press the enter key.
+Type **yes** and press the enter key.
 
 ```
 /usr/bin/ssh-copy-id: INFO: Source of key(s): "/home/kali/.ssh/id_rsa.pub"
