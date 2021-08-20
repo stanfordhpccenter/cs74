@@ -70,7 +70,7 @@ cat ~/.ssh/id_rsa.pub | ssh [username]@hpcc-cluster.stanford.edu "mkdir -p ~/.ss
 
 After you copy the SSH public key to the server, you will see a warning like this:
 ```
-The authenticity of host 'hpcc-cluster.stanford.edu (171.64.55.130)' can't be established.
+The authenticity of host 'hpcc-cluster (171.64.55.130)' can't be established.
 ECDSA key fingerprint is SHA256:20rcvjngfjkrjjank45436tkjfhsdkfsdHjosfjJhk.
 Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
 ```
@@ -79,7 +79,7 @@ Type _yes_ and press the enter key.
 
 You'll receive a response like this:
 ```
-Warning: Permanently added 'hpcc-cluster.stanford.edu,171.64.55.130' (ECDSA) to the list of known hosts.
+Warning: Permanently added 'hpcc-cluster,171.64.55.130' (ECDSA) to the list of known hosts.
 ```
 
 You'll be prompted for your HPCC password, which we're providing.
@@ -104,8 +104,8 @@ You will get a warning like this. If you entered the server address correctly, y
 Type _yes_ and press the enter key.
 
 ```
-/usr/bin/ssh-copy-id: INFO: Source of key(s) to be installed: "/home/kali/.ssh/id_rsa.pub"
-The authenticity of host 'hpcc-cluster.stanford.edu (171.64.55.130)' can't be established.
+/usr/bin/ssh-copy-id: INFO: Source of key(s): "/home/kali/.ssh/id_rsa.pub"
+The authenticity of host 'hpcc-cluster (171.64.55.130)' can't be established.
 ECDSA key fingerprint is SHA256:20crZ5XWQNxMgW0BZo3mE97j7z2ThNoULDzVeUAVeCg.
 Are you sure you want to continue connecting (yes/no/[fingerprint]) yes?
 ```
