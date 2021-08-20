@@ -119,7 +119,6 @@ You'll receive a response like this:
 You'll be prompted for your HPCC password, which we're providing.
 Type your password and press enter.
 Note: Your keystrokes will not appear on the screen.
-
 ```
 davidron@hpcc-cluster.stanford.edu's password:
 ```
@@ -127,9 +126,6 @@ davidron@hpcc-cluster.stanford.edu's password:
 You'll receive a response like this:
 ```
 Number of key(s) added: 1
-
-Now try logging into the machine, with: "ssh 'davidron@hpcc-cluster.stanford.edu' "
-and check to make sure that only the key(s) you wanted were added.
 ```
 
 **3: Test SSH Key Authentication**
@@ -141,7 +137,6 @@ ssh [your username]@hpcc-cluster.stanford.edu
 ```
 
 If SSH key authentication worked, you should get a response like this:
-
 ```
 Last login: Thu Jul 15 20:11:39 2021 from dn2lk5ehf.stanford.edu
 [davidron@hpcc-cluster ~]$
