@@ -79,7 +79,7 @@ Type _yes_ and press the enter key.
 
 You'll receive a response like this:
 ```
-Warning: Permanently added 'hpcc-cluster,171.64.55.130' (ECDSA) to the list of hosts.
+Warning: Permanently added 'hpcc-cluster,171.64.55.130' (ECDSA) to list of hosts
 ```
 
 You'll be prompted for your HPCC password, which we're providing.
