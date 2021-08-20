@@ -1,4 +1,4 @@
-**1. Create an SSH Key Pair **
+**1. Create an SSH Key Pair**
 
 On your local computer, start MacOS Terminal, Windows PowerShell, or your Linux terminal of choice.
 
@@ -43,7 +43,7 @@ The key's randomart image is:
 +----[SHA256]-----+
 ```
 
-**2: Copy the SSH Public Key to the Server - For Windows Users ONLY **
+**2: Copy the SSH Public Key to the Server - For Windows Users ONLY**
 
 ----
 
