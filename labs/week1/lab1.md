@@ -131,3 +131,17 @@ Now try logging into the machine, with: "ssh 'davidron@hpcc-cluster.stanford.edu
 and check to make sure that only the key(s) you wanted were added.
 ```
 
+**3: Test SSH Key Authentication**
+
+Run the following, replacing _[your username]_ with your HPCC username, which we're providing:
+
+```
+ssh [your username]@hpcc-cluster.stanford.edu
+```
+
+If SSH key authentication worked, you should get a response like this:
+
+```
+Last login: Thu Jul 15 20:11:39 2021 from dn2lk5ehf.stanford.edu
+[davidron@hpcc-cluster ~]$
+```
