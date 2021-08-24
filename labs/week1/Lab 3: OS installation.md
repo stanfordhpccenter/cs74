@@ -1,4 +1,5 @@
-Setting Up Your Cluster
+## Setting Up Your Cluster
+
 This guide will outline the installation process for the cluster you will be working on for ME344. Make sure to only use the cluster assigned to you.
 
 An important note about this guide: if you do not follow the instructions, step-by-step, there is a very high chance that you will run into issues. Don't worry about it too much, as this class is about learning how HPC works and making mistakes is a natural part of the process.
@@ -11,27 +12,36 @@ Important: Your assigned cluster is made up of 4 computers: one master node and 
 
 You will be setting the hostnames of the compute nodes later on in the guide, but here are the names of the compute nodes for the cluster me344-cluster-15:
 
-1. compute-15-12
-2. compute-15-13
-3. compute-15-14
+1. ```compute-15-12```
+2. ```compute-15-13```
+3. ```compute-15-14```
+
 The only number that will change between your cluster and the one used in this example is [C], which is 15 in this case but can range from 1 - 15. Pay close attention to the details of your cluster assignment!
 
 You will need to be connected to the Stanford VPN in order to connect to any of our compute resources. Instructions about setting it up are available here.
 
-Week #1
-Installing CentOS on the Master Node
+### Week #1
+
+#### Installing CentOS on the Master Node
+
 Because you won't have physical access to the computers this quarter, we are going to follow a bit of a different process to install the operating system. You'll need to initialize the master node for your cluster and set it up for network boot, which will install the OS onto the machine.
 
 Log into me344-cluster in order to execute ipmitool commands:
 
+```
 ssh [sunetid]@me344-cluster.stanford.edu
+```
+
 Set the next boot to PXE:
 
+```
 ipmitool -H me344-cluster-[C]-ipmi -U USERID -P PASSW0RD chassis bootdev pxe
+```
 Reboot the machine:
 
-ipmitool -H me344-cluster-[C]-ipmi -U USERID -P PASSW0RD chassis power cycle
-Due to the nature of the installation process, ME344 teaching staff will need to initiate the install between these steps. Hopefully you will only need to do this once, but contact us through if you need it to be initialized again.
+```ipmitool -H me344-cluster-[C]-ipmi -U USERID -P PASSW0RD chassis power cycle```
+
+Due to the nature of the installation process, CS74 teaching staff will need to initiate the install between these steps. Hopefully you will only need to do this once, but contact us through if you need it to be initialized again.
 
 Because we don't have physical access to the machine, we will need to verify the installation in another manner: using Serial over LAN (SOL) through IPMI. Serial is a type of communication interface that allows one to see what is happening (usually only text) on a computer, rather than using HDMI/VGA or other types of visual connectors. SOL allows us to connect to see what is happening on a screen through a network interface, in this case, IPMI.
 
