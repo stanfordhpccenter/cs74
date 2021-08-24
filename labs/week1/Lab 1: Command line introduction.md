@@ -6,7 +6,7 @@
 - If you're running MacOS or a Linux distribution OS, then you should already have a Terminal app.
 - If you're running a Windows OS, find Windows PowerShell or Windows Terminal by searching for either in the Start box.
 
-2. In the command line, SSH into the remote server using the username and password that we provide. Replace ```[user]``` with your assigned username.
+2. In the command line, SSH into the remote server login node using the username and password that we provide. Replace ```[user]``` with your assigned username.
 
 ```
 ssh [user]@hpcc-cluster.stanford.edu
@@ -15,12 +15,6 @@ ssh [user]@hpcc-cluster.stanford.edu
 You'll be prompted for your password. Type in your password and press enter. Your keystrokes will not be visible on the command line.
 
 You might get a warning asking whether you trust the authenticity of the host. Type yes and press enter.
-
-3. Connect to your assigned cluster. Ensure you replace ```[C]``` in the instructions with your assigned cluster number. For example, if your cluster number is 15, you'd enter ```ssh [user]@hpcc-cluster-15.stanford.edu```.
-
-```
-ssh [user]@hpcc-cluster-[C].stanford.edu
-```
 
 ### Complete the following exercises
 
