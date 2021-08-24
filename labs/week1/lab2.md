@@ -1,4 +1,6 @@
-# SSH Key Authentication Setup
+## SSH Client Installation
+
+## SSH Key Authentication Setup
 
 **1. Create an SSH Key Pair**
 
