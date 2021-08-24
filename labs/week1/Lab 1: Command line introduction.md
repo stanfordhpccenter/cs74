@@ -1,3 +1,5 @@
+# Command Line Intro Exercises
+
 1. Create a directory in your home directory named ```slurm-jobs```.
 
 ```
@@ -18,4 +20,8 @@ nano myscript
 echo $HOME
 ```
 
-4. Add the following line ```#SBATCH --mail-su=user@domain.edu``` to ```myscript``` without opening the file:
+4. Add the following line ```#SBATCH --mail-su=user@domain.edu``` to the end of ```myscript``` without opening the file:
+
+```
+echo "#SBATCH --mail-su=user@domain.edu"
+```
