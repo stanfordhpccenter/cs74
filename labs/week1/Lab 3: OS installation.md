@@ -20,10 +20,12 @@ You will need to be connected to the Stanford VPN in order to connect to any of 
 
 Because you won't have physical access to the computers this quarter, we are going to follow a bit of a different process to install the operating system. You'll need to initialize the master node for your cluster and set it up for network boot, which will install the OS onto the machine.
 
-Log into ```hpcc-cluster``` in order to execute ipmitool commands:
+NOTE: Proceed only if you've completed the SSH key configuration for your assigned cluster.
+
+SSH into ```hpcc-cluster-[C]``` in order to execute ipmitool commands:
 
 ```
-ssh [sunetid]@hpcc-cluster.stanford.edu
+ssh [sunetid]@hpcc-cluster-[C].stanford.edu
 ```
 
 Set the next boot to PXE:
