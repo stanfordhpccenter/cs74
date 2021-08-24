@@ -1,6 +1,6 @@
-## Setting Up Your Cluster
+# Setting Up Your Cluster
 
-This guide will outline the installation process for the cluster you will be working on for ME344. Make sure to only use the cluster assigned to you.
+This guide will outline the installation process for the cluster you will be working on for CS74. Make sure to only use the cluster assigned to you.
 
 An important note about this guide: if you do not follow the instructions, step-by-step, there is a very high chance that you will run into issues. Don't worry about it too much, as this class is about learning how HPC works and making mistakes is a natural part of the process.
 
@@ -37,9 +37,12 @@ Set the next boot to PXE:
 ```
 ipmitool -H me344-cluster-[C]-ipmi -U USERID -P PASSW0RD chassis bootdev pxe
 ```
+
 Reboot the machine:
 
-```ipmitool -H me344-cluster-[C]-ipmi -U USERID -P PASSW0RD chassis power cycle```
+```
+ipmitool -H me344-cluster-[C]-ipmi -U USERID -P PASSW0RD chassis power cycle
+```
 
 Due to the nature of the installation process, CS74 teaching staff will need to initiate the install between these steps. Hopefully you will only need to do this once, but contact us through if you need it to be initialized again.
 
@@ -47,17 +50,24 @@ Because we don't have physical access to the machine, we will need to verify the
 
 Now, let's connect to the machine through SOL so you can see what is happening on the console.
 
+```
 ipmitool -H me344-cluster-[C]-ipmi -U USERID -P PASSW0RD -I lanplus sol activate
+```
+
 Once you reach a screen that says PXE Boot, the process is working so far. The entire installation process from this point will take between 5 - 10 minutes. You will know that the OS is installed when the screen says that it is booting into CentOS. You will not receive any output after this point.
 
 If nothing is happening on the screen, the operating system may not have been provisioned to this specific machine. Please reach out to course staff and they will provision it.
 
 In a new terminal window, we need to disconnect the SOL session. SSH back into me344-cluster, run the deactivate command, and close the terminal windows that you used to connect to me344-cluster:
 
+```
 ssh [sunetid]@me344-cluster.stanford.edu
+```
 ...
 [sunetid@me344-cluster ~]# ipmitool -H me344-cluster-[C]-ipmi -U USERID -P PASSW0RD -I lanplus sol deactivate
-Configure Master Node
+
+
+#### Configure Master Node
 Terminate the current SSH session, and wait a few minutes for the master node to boot up.
 
 Now, connect to the master node (default password is stanford):
