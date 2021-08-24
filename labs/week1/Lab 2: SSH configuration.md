@@ -1,5 +1,11 @@
 ## SSH Client Installation
 
+### MacOS
+
+If you're running MacOS, you already have the Terminal app which has a built-in SSH client. 
+
+You can start Terminal from the Finder app or double click it from the Applications/Utilities folder.
+
 ## SSH Key Authentication Setup
 
 **1. Create an SSH Key Pair**
