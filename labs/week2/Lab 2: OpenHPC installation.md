@@ -80,7 +80,7 @@ PartitionName=normal Nodes=c[1-4] Default=YES MaxTime=24:00:00 State=UP
 ReturnToService=2
 ```
 
-Go ahead and start a text editor (nano, vim, emacs) and start editing /etc/slurm/slurm.conf. Replace ```c[1-4]``` in the first line with your compute node scheme. Carrying on with the previous example, if our cluster name is ```me344-cluster-15```, the compute node scheme would be ```compute-15-[12-14]```.
+Go ahead and start a text editor (nano, vim, emacs) and start editing /etc/slurm/slurm.conf. Replace ```c[1-4]``` in the first line with your compute node hostname. Carrying on with the previous example, if our cluster name is ```hpcc-cluster-15```, the compute node scheme would be ```compute-15```.
 
 For the second line, you can set ```Nodes=ALL```. In addition to the hostname configuration, we need to let Slurm know the specifics about our hardware. Run the lscpu command on your master node. The output should resemble the following:
 
@@ -101,7 +101,7 @@ Note the following options in the Slurm configuration ```ThreadsPerCore```, ```C
 
 By the end, this is what the end of your Slurm configuration ```(/etc/slurm/slurm.conf)``` should look like:
 ```
-NodeName=compute-[C]-[12-14] Sockets=2 CoresPerSocket=8 ThreadsPerCore=2 State=UNKNOWN
+NodeName=compute-[C] Sockets=2 CoresPerSocket=8 ThreadsPerCore=2 State=UNKNOWN
 PartitionName=normal Nodes=ALL Default=YES MaxTime=24:00:00 State=UP
 ReturnToService=2
 ```
@@ -264,15 +264,13 @@ Extremely Important: you will need to run the above command every time you make 
 
 Now, we will be adding the compute nodes to the Warewulf database. Please refer to this page to obtain the IP and MAC addresses.
 
-The following information is very important: the IP addresses and hostnames of the compute nodes will need to be assigned very carefully. For this class, we are following this pattern for the naming of the nodes: ```compute-[C]-[N]```, where ```[N]``` is the number of the compute node. This number will range between 12 - 14 in this case.
+The following information is very important: the IP addresses and hostnames of the compute nodes will need to be assigned very carefully. For this class, we are following this pattern for the naming of the nodes: ```compute-[C]```.
 
-For the IP address, it is defined this way: ```10.[C].[N].2```. So, if you wanted to define the compute nodes for ```me344-cluster-1```, you would run these commands. Of course, remember to add the MAC addresses for each corresponding node. As a reminder, they can be found here.
+For the IP address, it is defined this way: ```10.[C].2```. So, if you wanted to define the compute nodes for ```hpcc-cluster-1```, you would run these commands. Of course, remember to add the MAC addresses for each corresponding node. As a reminder, they can be found here.
 
 Please make sure to replace ```MAC_ADDR``` with the correct address for the node you are adding (as well as the hostname and IP address)!
 ```
-wwsh -y node new compute-1-12 --ipaddr=10.1.12.2 --hwaddr=MAC_ADDR
-wwsh -y node new compute-1-13 --ipaddr=10.1.13.2 --hwaddr=MAC_ADDR
-wwsh -y node new compute-1-14 --ipaddr=10.1.14.2 --hwaddr=MAC_ADDR
+wwsh -y node new compute-1 --ipaddr=10.1.2 --hwaddr=MAC_ADDR
 ```
 
 Now, we are going to define the provisioning image for the compute nodes:
@@ -288,9 +286,9 @@ wwsh pxe update
 
 We used ipmitool a bit earlier, and we will need to use it again. Using part of the schema defined above, the ipmi addresses for the nodes will follow this formula: ```10.[C].[N].3```. Notice the 3 at the end. So, to restart the compute nodes, you would run the following:
 
-Hint: you need to run the command below 3 times (once for each compute node).
+Hint: you need to run the command below once (once for your one compute node).
 ```
-ipmitool -H 10.[C].[N].3 -U USERID -P PASSW0RD chassis power cycle
+ipmitool -H 10.[C].3 -U USERID -P PASSW0RD chassis power cycle
 ```
 
 For instance, the ipmi address for ```compute-1-12``` is ```10.1.12.3```.
