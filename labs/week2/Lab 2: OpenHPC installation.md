@@ -1,3 +1,5 @@
+### Installing and Configuring OpenHPC
+
 Connect to the master node (default password is stanford):
 ```
 ssh root@me344-cluster-[C].stanford.edu
