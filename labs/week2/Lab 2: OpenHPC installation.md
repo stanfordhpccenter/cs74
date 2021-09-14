@@ -14,44 +14,64 @@ reboot
 ```
 
 Once rebooted, connect through SSH and verify that SELinux is disabled:
-
+```
 sestatus
-Disable the firewall service:
+```
 
+Disable the firewall service:
+```
 systemctl stop firewalld
 systemctl disable firewalld
-Add Kernel Packages
+```
 
+Add Kernel Packages
+```
 yum -y install http://vault.centos.org/7.7.1908/os/x86_64/Packages/kernel-debug-3.10.0-1062.el7.x86_64.rpm
 yum -y install http://vault.centos.org/7.7.1908/os/x86_64/Packages/kernel-debug-devel-3.10.0-1062.el7.x86_64.rpm
-Lock Kernel Version
+```
 
+Lock Kernel Version
+```
 yum -y install yum-plugin-versionlock 
 yum versionlock *-3.10.0-1062.el7.x86_64
+```
+
 Install the repository for OpenHPC:
-
+```
 yum -y install http://build.openhpc.community/OpenHPC:/1.3/CentOS_7/x86_64/ohpc-release-1.3-1.el7.x86_64.rpm 
-Install provisioning services:
+```
 
+Install provisioning services:
+```
 yum -y install ohpc-base
 yum -y install ohpc-warewulf
-Configure time services:
+```
 
+Configure time services:
+```
 systemctl enable ntpd.service
 echo "server time.stanford.edu" >> /etc/ntp.conf
 systemctl restart ntpd
+```
+
 Install Slurm:
-
+```
 yum -y install ohpc-slurm-server
+```
+
 Configure Slurm to add master node hostname:
-
+```
 perl -pi -e "s/ControlMachine=\S+/ControlMachine=me344-cluster-[C]/" /etc/slurm/slurm.conf
-Change default node state for nodes returning to service (automatically return to services if all resources report correctly):
+```
 
+Change default node state for nodes returning to service (automatically return to services if all resources report correctly):
+```
 perl -pi -e "s/ReturnToService=1/ReturnToService=2/" /etc/slurm/slurm.conf
+```
+
 Now, we need to configure the hostnames inside the Slurm settings. Remember, the hostname scheme for the compute nodes is: compute-[C]-[12-14], where [C] is the cluster number (i.e. 15).
 
-This is what the end of /etc/slurm/slurm.conf will look like at this point:
+This is what the end of ```/etc/slurm/slurm.conf``` will look like at this point:
 
 NodeName=c[1-4] Sockets=2 CoresPerSocket=8 ThreadsPerCore=2 State=UNKNOWN
 PartitionName=normal Nodes=c[1-4] Default=YES MaxTime=24:00:00 State=UP
