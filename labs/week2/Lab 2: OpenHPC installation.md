@@ -164,6 +164,7 @@ chroot $CHROOT
 yum versionlock *-3.10.0-1062.el7.x86_64
 exit
 ```
+
 Install the base package for compute nodes through OpenHPC:
 ```
 yum -y --installroot=$CHROOT install ohpc-base-compute
@@ -196,132 +197,180 @@ wwinit ssh_keys
 cat ~/.ssh/cluster.pub >> $CHROOT/root/.ssh/authorized_keys
 ```
 
-Add NFS client mounts of /home and /opt/ohpc/pub to base image:
+Add NFS client mounts of ```/home``` and ```/opt/ohpc/pub``` to base image:
 ```
 echo "10.1.1.1:/home /home nfs nfsvers=3,nodev,nosuid,noatime 0 0" >> $CHROOT/etc/fstab
 echo "10.1.1.1:/opt/ohpc/pub /opt/ohpc/pub nfs nfsvers=3,nodev,noatime 0 0" >> $CHROOT/etc/fstab
 ```
 
-Export /home and OpenHPC public packages from master server:
-
+Export ```/home``` and OpenHPC public packages from master server:
+```
 echo "/home *(rw,no_subtree_check,fsid=10,no_root_squash)" >> /etc/exports
 echo "/opt/ohpc/pub *(ro,no_subtree_check,fsid=11)" >> /etc/exports
 exportfs -a
 systemctl restart nfs-server
 systemctl enable nfs-server
-Enable NTP time service on compute node and add master host as local NTP server:
+```
 
+Enable NTP time service on compute node and add master host as local NTP server:
+```
 chroot $CHROOT systemctl enable ntpd
 echo "server 10.1.1.1" >> $CHROOT/etc/ntp.conf
+```
+
 Define compute node forwarding destination:
-
+```
 echo "*.* @10.1.1.1:514" >> $CHROOT/etc/rsyslog.conf
-Disable most logging on compute nodes. Emergency and boot logs will remain on compute nodes.
+```
 
+Disable most logging on compute nodes. Emergency and boot logs will remain on compute nodes.
+```
 perl -pi -e "s/^\*\.info/\\#\*\.info/" $CHROOT/etc/rsyslog.conf
 perl -pi -e "s/^authpriv/\\#authpriv/" $CHROOT/etc/rsyslog.conf
 perl -pi -e "s/^mail/\\#mail/" $CHROOT/etc/rsyslog.conf
 perl -pi -e "s/^cron/\\#cron/" $CHROOT/etc/rsyslog.conf
 perl -pi -e "s/^uucp/\\#uucp/" $CHROOT/etc/rsyslog.conf
-Certain files need to be added Warewulf sync list in order to ensure functionality:
+```
 
+Certain files need to be added Warewulf sync list in order to ensure functionality:
+```
 wwsh file import /etc/passwd
 wwsh file import /etc/group
 wwsh file import /etc/shadow
 wwsh file import /etc/slurm/slurm.conf
 wwsh file import /etc/munge/munge.key
-Set provisioning interface as the default networking device:
+```
 
+Set provisioning interface as the default networking device:
+```
 echo "GATEWAYDEV=eth0" > /tmp/network.$$
 echo "GATEWAY=10.1.1.1" >> /tmp/network.$$
 wwsh -y file import /tmp/network.$$ --name network
 wwsh -y file set network --path /etc/sysconfig/network --mode=0644 --uid=0
+```
+
 Build bootstrap device:
-
+```
 wwbootstrap `uname -r`
-Assemble VNFS image:
+```
 
+Assemble VNFS image:
+```
 wwvnfs --chroot $CHROOT
+```
 Extremely Important: you will need to run the above command every time you make changes to the CHROOT environment (i.e. adding new packages, modifying files). Your changes will not be reflected if you don't run this command and restart the compute nodes.
 
 Now, we will be adding the compute nodes to the Warewulf database. Please refer to this page to obtain the IP and MAC addresses.
 
-The following information is very important: the IP addresses and hostnames of the compute nodes will need to be assigned very carefully. For this class, we are following this pattern for the naming of the nodes: compute-[C]-[N], where [N] is the number of the compute node. This number will range between 12 - 14 in this case.
+The following information is very important: the IP addresses and hostnames of the compute nodes will need to be assigned very carefully. For this class, we are following this pattern for the naming of the nodes: ```compute-[C]-[N]```, where ```[N]``` is the number of the compute node. This number will range between 12 - 14 in this case.
 
-For the IP address, it is defined this way: 10.[C].[N].2. So, if you wanted to define the compute nodes for me344-cluster-1, you would run these commands. Of course, remember to add the MAC addresses for each corresponding node. As a reminder, they can be found here.
+For the IP address, it is defined this way: ```10.[C].[N].2```. So, if you wanted to define the compute nodes for ```me344-cluster-1```, you would run these commands. Of course, remember to add the MAC addresses for each corresponding node. As a reminder, they can be found here.
 
-Please make sure to replace MAC_ADDR with the correct address for the node you are adding (as well as the hostname and IP address)!
-
+Please make sure to replace ```MAC_ADDR``` with the correct address for the node you are adding (as well as the hostname and IP address)!
+```
 wwsh -y node new compute-1-12 --ipaddr=10.1.12.2 --hwaddr=MAC_ADDR
 wwsh -y node new compute-1-13 --ipaddr=10.1.13.2 --hwaddr=MAC_ADDR
 wwsh -y node new compute-1-14 --ipaddr=10.1.14.2 --hwaddr=MAC_ADDR
+```
+
 Now, we are going to define the provisioning image for the compute nodes:
-
+```
 wwsh -y provision set "compute-*" --vnfs=centos7 --bootstrap=`uname -r` --files=dynamic_hosts,passwd,group,shadow,network,slurm.conf,munge.key
-Restart DHCP and update PXE:
+```
 
+Restart DHCP and update PXE:
+```
 systemctl restart dhcpd
 wwsh pxe update
-We used ipmitool a bit earlier, and we will need to use it again. Using part of the schema defined above, the ipmi addresses for the nodes will follow this formula: 10.[C].[N].3. Notice the 3 at the end. So, to restart the compute nodes, you would run the following:
+```
+
+We used ipmitool a bit earlier, and we will need to use it again. Using part of the schema defined above, the ipmi addresses for the nodes will follow this formula: ```10.[C].[N].3```. Notice the 3 at the end. So, to restart the compute nodes, you would run the following:
 
 Hint: you need to run the command below 3 times (once for each compute node).
-
+```
 ipmitool -H 10.[C].[N].3 -U USERID -P PASSW0RD chassis power cycle
-For instance, the ipmi address for compute-1-12 is 10.1.12.3.
+```
+
+For instance, the ipmi address for ```compute-1-12``` is ```10.1.12.3```.
 
 You can view progress of the installation of the operating system onto compute nodes with the following command line option:
-
+```
 tail -f /var/log/messages
+```
+
 The compute nodes will go through a DHCP and PXE process, and end with a mount process. To quit watching the log, use ctrl+c.
 
 To verify that the compute nodes have booted, you can ping their hostname, i.e:
-
+```
 ping compute-1-12
-The output should resemble this:
+```
 
+The output should resemble this:
+```
 PING compute-1-12.localdomain (10.1.12.2) 56(84) bytes of data.
 64 bytes from compute-1-12.localdomain (10.1.12.2): icmp_seq=1 ttl=64 time=0.244 ms
 64 bytes from compute-1-12.localdomain (10.1.12.2): icmp_seq=2 ttl=64 time=0.257 ms
 64 bytes from compute-1-12.localdomain (10.1.12.2): icmp_seq=3 ttl=64 time=0.253 m
+```
+
 Kerberos Authentication
 
 Kerberos is an authentication method that the HPCC uses, allowing cluster users to sign in to machines using their SUNet IDs. First, install Kerberos on your master node, and copy the configuration file to the me344-cluster machine:
 
 When specifying your SUNet ID, do not use your email address, only the ID.
-
+```
 yum -y install pam_krb5
 scp [sunetid]@me344-cluster:/etc/krb5.conf /etc/
 authconfig --enablekrb5 --update
-Now, add your and your partner(s) SUNet IDs to the system:
+```
 
+Now, add your and your partner(s) SUNet IDs to the system:
+```
 useradd -m [sunetid]
 useradd -m [partner_sunetid]
+```
+
 Push file changes to the compute nodes:
-
+```
 wwsh file resync passwd shadow group
-If the above command does not work, using pdsh is a fall-back solution:
+```
 
+If the above command does not work, using pdsh is a fall-back solution:
+```
 pdsh -w compute-[C]-[12-14] /warewulf/bin/wwgetfiles
+```
+
 To check if the Kerberos configuration worked, run the following commands (# denote comments, not commands you need to run):
 
 # This command checks if the "useradd" comand was successful. Once you log into the user, immediately logout or click Ctrl-D.
+```
 su - [sunetid]
 logout
 kinit [sunetid]
 klist
 kdestroy
 klist
+```
+
 The following commands can be used to check the uptime on the compute nodes:
-
+```
 pdsh -w compute-[C]-[12-14] uptime
+```
 # OR
+```
 wwsh ssh c* uptime
-Output should resemble:
+```
 
+Output should resemble:
+```
 compute-1-14:  19:34:16 up  5:24,  0 users,  load average: 0.00, 0.01, 0.04
 compute-1-13:  19:34:16 up  5:24,  0 users,  load average: 0.00, 0.01, 0.04
 compute-1-12:  19:34:16 up  5:24,  0 users,  load average: 0.00, 0.01, 0.04
-Important: remember when we used wwsh file import to sync files between the master and compute nodes? To resync them at any time, you can run the following command:
+```
 
+Important: remember when we used wwsh file import to sync files between the master and compute nodes? To resync them at any time, you can run the following command:
+```
 wwsh file resync
+```
+
 You might find yourself using this command if you make any changes to the Slurm configuration, add any users to the machine, or modify other files that you may have selected to sync.
