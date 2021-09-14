@@ -95,81 +95,113 @@ Socket(s):             2
 ...
 ```
 
-Note the following options in the Slurm configuration Sockets, CoresPerSocket, ThreadsPerCore. If the values that Slurm displays resemble what is being outputted by the respective lscpu fields, then you are good to go. Otherwise, update the Slurm settings to match what lscpu outputs.
+Note the following options in the Slurm configuration ```ThreadsPerCore```, ```CoresPerSocket```, ```Sockets```. If the values that Slurm displays resemble what is being outputted by the respective ```lscpu``` fields, then you are good to go. Otherwise, update the Slurm settings to match what ```lscpu``` outputs.
 
-By the end, this is what the end of your Slurm configuration (/etc/slurm/slurm.conf) should look like:
-
+By the end, this is what the end of your Slurm configuration ```(/etc/slurm/slurm.conf)``` should look like:
+```
 NodeName=compute-[C]-[12-14] Sockets=2 CoresPerSocket=8 ThreadsPerCore=2 State=UNKNOWN
 PartitionName=normal Nodes=ALL Default=YES MaxTime=24:00:00 State=UP
 ReturnToService=2
-Hint: Nodes=ALL is case insensitive — you must format it this way or it will not work.
+```
+Hint: ```Nodes=ALL``` is case insensitive — you must format it this way or it will not work.
 
 Start and enable Slurm and Munge:
-
+```
 systemctl enable munge
 systemctl start munge
 systemctl enable slurmctld
 systemctl start slurmctld
-Configure Warewulf, our provisioning utility to use the local network (enp6s0f1) as the provisioning interface:
+```
 
+Configure Warewulf, our provisioning utility to use the local network ```(enp6s0f1)``` as the provisioning interface:
+```
 perl -pi -e "s/device = eth1/device = enp6s0f1/" /etc/warewulf/provision.conf
+```
+
 Enable tftp service for compute node image distribution:
-
+```
 perl -pi -e "s/^\s+disable\s+= yes/ disable = no/" /etc/xinetd.d/tftp
-Restart and enable relevant services to support provisioning on the master node:
+```
 
+Restart and enable relevant services to support provisioning on the master node:
+```
 systemctl restart xinetd
 systemctl enable mariadb.service
 systemctl restart mariadb
 systemctl enable httpd.service
 systemctl restart httpd
 systemctl enable dhcpd.service
+```
+
 Define the CHROOT environment location for the compute nodes:
-
+```
 export CHROOT=/opt/ohpc/admin/images/centos7
+```
+
 Add to your local environment for future use:
-
+```
 echo "export CHROOT=/opt/ohpc/admin/images/centos7" >> /root/.bashrc
+```
+
 Build initial CHROOT image:
-
+```
 wwmkchroot centos-7 $CHROOT
-Add Kernel Packages
+```
 
+Add Kernel Packages
+```
 yum -y --installroot=$CHROOT install http://vault.centos.org/7.7.1908/os/x86_64/Packages/kernel-3.10.0-1062.el7.x86_64.rpm
 yum -y --installroot=$CHROOT install http://vault.centos.org/7.7.1908/os/x86_64/Packages/kernel-headers-3.10.0-1062.el7.x86_64.rpm
 yum -y --installroot=$CHROOT install http://vault.centos.org/7.7.1908/os/x86_64/Packages/kernel-devel-3.10.0-1062.el7.x86_64.rpm
 yum -y --installroot=$CHROOT install http://vault.centos.org/7.7.1908/os/x86_64/Packages/kernel-debug-3.10.0-1062.el7.x86_64.rpm
 yum -y --installroot=$CHROOT install http://vault.centos.org/7.7.1908/os/x86_64/Packages/kernel-debug-devel-3.10.0-1062.el7.x86_64.rpm
-Lock Kernel Version
+```
 
+Lock Kernel Version
+```
 yum -y --installroot=$CHROOT install yum-plugin-versionlock 
 chroot $CHROOT
 yum versionlock *-3.10.0-1062.el7.x86_64
 exit
+```
 Install the base package for compute nodes through OpenHPC:
-
+```
 yum -y --installroot=$CHROOT install ohpc-base-compute
+```
+
 Enable DNS on compute nodes:
-
+```
 cp -p /etc/resolv.conf $CHROOT/etc/resolv.conf
+```
+
 Add Slurm support to the compute nodes:
-
+```
 yum -y --installroot=$CHROOT install ohpc-slurm-client
+```
+
 Install time service:
-
+```
 yum -y --installroot=$CHROOT install ntp
+```
+
 Install modules user environment and ipmitool:
-
+```
 yum -y --installroot=$CHROOT install lmod-ohpc ipmitool
-Initialize Warewulf database and SSH keys for the compute nodes:
+```
 
+Initialize Warewulf database and SSH keys for the compute nodes:
+```
 wwinit database
 wwinit ssh_keys
 cat ~/.ssh/cluster.pub >> $CHROOT/root/.ssh/authorized_keys
-Add NFS client mounts of /home and /opt/ohpc/pub to base image:
+```
 
+Add NFS client mounts of /home and /opt/ohpc/pub to base image:
+```
 echo "10.1.1.1:/home /home nfs nfsvers=3,nodev,nosuid,noatime 0 0" >> $CHROOT/etc/fstab
 echo "10.1.1.1:/opt/ohpc/pub /opt/ohpc/pub nfs nfsvers=3,nodev,noatime 0 0" >> $CHROOT/etc/fstab
+```
+
 Export /home and OpenHPC public packages from master server:
 
 echo "/home *(rw,no_subtree_check,fsid=10,no_root_squash)" >> /etc/exports
