@@ -343,9 +343,8 @@ pdsh -w compute-[C]-[12-14] /warewulf/bin/wwgetfiles
 ```
 
 To check if the Kerberos configuration worked, run the following commands (# denote comments, not commands you need to run):
-
-# This command checks if the "useradd" comand was successful. Once you log into the user, immediately logout or click Ctrl-D.
 ```
+# This command checks if the "useradd" comand was successful. Once you log into the user, immediately logout or click Ctrl-D.
 su - [sunetid]
 logout
 kinit [sunetid]
