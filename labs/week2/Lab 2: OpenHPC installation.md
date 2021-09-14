@@ -2,7 +2,7 @@
 
 Connect to the master node (default password is stanford):
 ```
-ssh root@me344-cluster-[C].stanford.edu
+ssh [user]@hpcc-cluster-[C].stanford.edu
 ```
 
 Disable SELinux:
@@ -63,7 +63,7 @@ yum -y install ohpc-slurm-server
 
 Configure Slurm to add master node hostname:
 ```
-perl -pi -e "s/ControlMachine=\S+/ControlMachine=me344-cluster-[C]/" /etc/slurm/slurm.conf
+perl -pi -e "s/ControlMachine=\S+/ControlMachine=hpcc-cluster-[C]/" /etc/slurm/slurm.conf
 ```
 
 Change default node state for nodes returning to service (automatically return to services if all resources report correctly):
@@ -71,7 +71,7 @@ Change default node state for nodes returning to service (automatically return t
 perl -pi -e "s/ReturnToService=1/ReturnToService=2/" /etc/slurm/slurm.conf
 ```
 
-Now, we need to configure the hostnames inside the Slurm settings. Remember, the hostname scheme for the compute nodes is: compute-[C]-[12-14], where [C] is the cluster number (i.e. 15).
+Now, we need to configure the hostnames inside the Slurm settings. Remember, the hostname for the compute node is: compute-[C], where [C] is the cluster number (i.e. 15).
 
 This is what the end of ```/etc/slurm/slurm.conf``` will look like at this point:
 ```
