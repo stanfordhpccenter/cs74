@@ -284,14 +284,14 @@ systemctl restart dhcpd
 wwsh pxe update
 ```
 
-We used ipmitool a bit earlier, and we will need to use it again. Using part of the schema defined above, the ipmi addresses for the nodes will follow this formula: ```10.[C].[N].3```. Notice the 3 at the end. So, to restart the compute nodes, you would run the following:
+We used ipmitool a bit earlier, and we will need to use it again. Using part of the schema defined above, the ipmi addresses for the nodes will follow this formula: ```10.[C].3```. Notice the 3 at the end. So, to restart the compute nodes, you would run the following:
 
 Hint: you need to run the command below once (once for your one compute node).
 ```
 ipmitool -H 10.[C].3 -U USERID -P PASSW0RD chassis power cycle
 ```
 
-For instance, the ipmi address for ```compute-1-12``` is ```10.1.12.3```.
+For instance, the ipmi address for ```compute-1``` is ```10.1.3```.
 
 You can view progress of the installation of the operating system onto compute nodes with the following command line option:
 ```
@@ -302,15 +302,15 @@ The compute nodes will go through a DHCP and PXE process, and end with a mount p
 
 To verify that the compute nodes have booted, you can ping their hostname, i.e:
 ```
-ping compute-1-12
+ping compute-1
 ```
 
 The output should resemble this:
 ```
 PING compute-1-12.localdomain (10.1.12.2) 56(84) bytes of data.
-64 bytes from compute-1-12.localdomain (10.1.12.2): icmp_seq=1 ttl=64 time=0.244 ms
-64 bytes from compute-1-12.localdomain (10.1.12.2): icmp_seq=2 ttl=64 time=0.257 ms
-64 bytes from compute-1-12.localdomain (10.1.12.2): icmp_seq=3 ttl=64 time=0.253 m
+64 bytes from compute-1.localdomain (10.1.2): icmp_seq=1 ttl=64 time=0.244 ms
+64 bytes from compute-1.localdomain (10.1.2): icmp_seq=2 ttl=64 time=0.257 ms
+64 bytes from compute-1.localdomain (10.1.2): icmp_seq=3 ttl=64 time=0.253 m
 ```
 
 #### Kerberos Authentication
@@ -337,7 +337,7 @@ wwsh file resync passwd shadow group
 
 If the above command does not work, using pdsh is a fall-back solution:
 ```
-pdsh -w compute-[C]-[12-14] /warewulf/bin/wwgetfiles
+pdsh -w compute-[C] /warewulf/bin/wwgetfiles
 ```
 
 To check if the Kerberos configuration worked, run the following commands (# denote comments, not commands you need to run):
@@ -353,16 +353,14 @@ klist
 
 The following commands can be used to check the uptime on the compute nodes:
 ```
-pdsh -w compute-[C]-[12-14] uptime
+pdsh -w compute-[C] uptime
 # OR
 wwsh ssh c* uptime
 ```
 
 Output should resemble:
 ```
-compute-1-14:  19:34:16 up  5:24,  0 users,  load average: 0.00, 0.01, 0.04
-compute-1-13:  19:34:16 up  5:24,  0 users,  load average: 0.00, 0.01, 0.04
-compute-1-12:  19:34:16 up  5:24,  0 users,  load average: 0.00, 0.01, 0.04
+compute-1:  19:34:16 up  5:24,  0 users,  load average: 0.00, 0.01, 0.04
 ```
 
 Important: remember when we used wwsh file import to sync files between the master and compute nodes? To resync them at any time, you can run the following command:
