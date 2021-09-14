@@ -356,9 +356,7 @@ klist
 The following commands can be used to check the uptime on the compute nodes:
 ```
 pdsh -w compute-[C]-[12-14] uptime
-```
 # OR
-```
 wwsh ssh c* uptime
 ```
 
