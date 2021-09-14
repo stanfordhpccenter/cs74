@@ -72,14 +72,17 @@ perl -pi -e "s/ReturnToService=1/ReturnToService=2/" /etc/slurm/slurm.conf
 Now, we need to configure the hostnames inside the Slurm settings. Remember, the hostname scheme for the compute nodes is: compute-[C]-[12-14], where [C] is the cluster number (i.e. 15).
 
 This is what the end of ```/etc/slurm/slurm.conf``` will look like at this point:
-
+```
 NodeName=c[1-4] Sockets=2 CoresPerSocket=8 ThreadsPerCore=2 State=UNKNOWN
 PartitionName=normal Nodes=c[1-4] Default=YES MaxTime=24:00:00 State=UP
 ReturnToService=2
-Go ahead and start a text editor (nano, vim, emacs) and start editing /etc/slurm/slurm.conf. Replace c[1-4] in the first line with your compute node scheme. Carrying on with the previous example, if our cluster name is me344-cluster-15, the compute node scheme would be compute-15-[12-14].
+```
 
-For the second line, you can set Nodes=ALL. In addition to the hostname configuration, we need to let Slurm know the specifics about our hardware. Run the lscpu command on your master node. The output should resemble the following:
+Go ahead and start a text editor (nano, vim, emacs) and start editing /etc/slurm/slurm.conf. Replace ```c[1-4]``` in the first line with your compute node scheme. Carrying on with the previous example, if our cluster name is ```me344-cluster-15```, the compute node scheme would be ```compute-15-[12-14]```.
 
+For the second line, you can set ```Nodes=ALL```. In addition to the hostname configuration, we need to let Slurm know the specifics about our hardware. Run the lscpu command on your master node. The output should resemble the following:
+
+```
 [root@me344-cluster-15 ~]# lscpu
 Architecture:          x86_64
 CPU op-mode(s):        32-bit, 64-bit
@@ -90,6 +93,8 @@ Thread(s) per core:    2
 Core(s) per socket:    8
 Socket(s):             2
 ...
+```
+
 Note the following options in the Slurm configuration Sockets, CoresPerSocket, ThreadsPerCore. If the values that Slurm displays resemble what is being outputted by the respective lscpu fields, then you are good to go. Otherwise, update the Slurm settings to match what lscpu outputs.
 
 By the end, this is what the end of your Slurm configuration (/etc/slurm/slurm.conf) should look like:
