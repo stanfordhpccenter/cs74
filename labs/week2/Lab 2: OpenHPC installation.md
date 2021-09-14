@@ -1,4 +1,4 @@
-### Installing and Configuring OpenHPC
+## Installing and Configuring OpenHPC
 
 Connect to the master node (default password is stanford):
 ```
@@ -315,7 +315,7 @@ PING compute-1-12.localdomain (10.1.12.2) 56(84) bytes of data.
 64 bytes from compute-1-12.localdomain (10.1.12.2): icmp_seq=3 ttl=64 time=0.253 m
 ```
 
-Kerberos Authentication
+#### Kerberos Authentication
 
 Kerberos is an authentication method that the HPCC uses, allowing cluster users to sign in to machines using their SUNet IDs. First, install Kerberos on your master node, and copy the configuration file to the me344-cluster machine:
 
