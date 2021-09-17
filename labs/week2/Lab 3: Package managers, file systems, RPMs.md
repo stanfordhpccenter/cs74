@@ -16,8 +16,18 @@ ssh hpcc-cluster-[C].stanford.edu
 rpm -qpR example.rpm
 ```
 
-2. yum example2.rpm
+2. 
 
-3. yum remove example2.rpm
+```
+yum install example2.rpm
+```
 
-4. yum -y example2.rpm
+3. 
+```
+yum remove example2.rpm
+```
+
+4. 
+```
+yum -y install example2.rpm
+```
