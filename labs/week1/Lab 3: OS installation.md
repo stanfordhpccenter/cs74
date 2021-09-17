@@ -25,7 +25,7 @@ NOTE: Proceed only if you've completed the SSH key configuration for your assign
 SSH into ```hpcc-cluster-[C]``` in order to execute ipmitool commands:
 
 ```
-ssh [sunetid]@hpcc-cluster-[C].stanford.edu
+ssh hpcc-cluster-[C].stanford.edu
 ```
 
 Set the next boot to PXE:
