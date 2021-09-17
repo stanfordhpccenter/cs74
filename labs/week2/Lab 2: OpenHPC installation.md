@@ -1,4 +1,4 @@
-## Installing and Configuring OpenHPC
+# Installing and Configuring OpenHPC
 
 Connect to the master node (default password is stanford):
 ```
