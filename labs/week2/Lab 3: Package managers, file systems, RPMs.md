@@ -13,7 +13,7 @@ ssh hpcc-cluster-[C].stanford.edu
 1. Check the dependences of an RPM package before you install it
 
 ```
-rpm -qpR something.rpm
+rpm -qpR example.rpm
 ```
 
-2. 
+2. yum something
