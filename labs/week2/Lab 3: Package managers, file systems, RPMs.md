@@ -10,30 +10,31 @@ ssh hpcc-cluster-[C].stanford.edu
 
 ### Complete the following exercises on YUM and RPMs
 
-1. Check what's in the ```lapack``` package:
-```
-rpm  -ql lapack-3.4.2-8.el7.i686.rpm
-```
-
-2. Check the dependencies of ```lapack``` before installing it:
-```
-rpm -qpR lapack-3.4.2-8.el7.i686.rpm
-```
-
-3. Install ```lapack``` without using the ```y``` flag:
+1. Install ```lapack``` without using the ```y``` flag:
 ```
 yum install lapack-3.4.2-8.el7.i686.rpm
 ```
 
-4. Remove ```lapack``` and any packages that depend on lapack:
+2. Remove ```lapack``` and any packages that depend on lapack:
 ```
 yum remove lapack-3.4.2-8.el7.i686.rpm
 ```
 
-5. Install ```lapack``` using the ```y``` flag:
+3. Install ```lapack``` using the ```y``` flag:
 ```
 yum -y install lapack-3.4.2-8.el7.i686.rpm
 ```
+
+4. Check what's in the ```lapack``` package:
+```
+rpm  -ql lapack-3.4.2-8.el7.i686.rpm
+```
+
+5. Check the dependencies of ```lapack```:
+```
+rpm -qpR lapack-3.4.2-8.el7.i686.rpm
+```
+
 
 ### Install the compute node OS using a VNFS image
 
