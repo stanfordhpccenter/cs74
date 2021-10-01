@@ -15,7 +15,7 @@ ssh hpcc-cluster-[C].stanford.edu
 rpm  -ql lapack-3.4.2-8.el7.i686.rpm
 ```
 
-2. Check the dependences of ```lapack``` before you install it:
+2. Check the dependencies of ```lapack``` before installing it:
 ```
 rpm -qpR lapack-3.4.2-8.el7.i686.rpm
 ```
