@@ -34,3 +34,7 @@ yum remove lapack-3.4.2-8.el7.i686.rpm
 ```
 yum -y install lapack-3.4.2-8.el7.i686.rpm
 ```
+
+### Install the compute node OS using a VNFS image
+
+
