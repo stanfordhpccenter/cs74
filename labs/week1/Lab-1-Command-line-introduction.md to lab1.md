@@ -43,8 +43,3 @@ echo $HOME
   You'll be asked whether to save a modified buffer. Type in yes and press enter.
   You'll be asked what file name to write. The current file name should be there by default. Press the enter key.
 
-4. Add the following line ```#SBATCH --mail-su=user@domain.edu``` to the end of ```myscript``` without opening the file:
-
-```
-echo "#SBATCH --mail-su=user@domain.edu"
-```
