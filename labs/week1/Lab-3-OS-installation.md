@@ -8,11 +8,9 @@ Also, if you simply copy-paste these commands into your terminal without underst
 
 Once assigned your cluster, be sure to note the entire hostname and especially the number, as it will be extremely important throughout this guide. When you see **```[C]```**, it will be referring to the number of the cluster. For example, 15 corresponds to ```hpcc-cluster-15```.
 
-Important: Your assigned cluster is made up of two computers: one master node and one compute node. Continuing with the previous example, if you are assigned ```hpcc-cluster-15```, the hostname of the master node is ```hpcc-cluster-15```, and the compute nodes has a numerically assigned identifier ```1```, i.e. the compute node's host name will be ```compute-15-1```.
+Important: Your assigned cluster is made up of two computers: one master node and one compute node. Continuing with the previous example, if you are assigned ```hpcc-cluster-15```, the hostname of the master node is ```hpcc-cluster-15```, and the compute nodes has a numerically assigned identifier ```1```, i.e. the compute node's host name will be ```compute-1-1```.
 
 The only number that will change between your cluster and the one used in this example is ```[C]```, which is 15 in this case but can range from 1 - 15. Pay close attention to the details of your cluster assignment!
-
-You will need to be connected to the Stanford VPN in order to connect to any of our compute resources. Instructions about setting it up are in prior labs.
 
 ## Week #1
 
@@ -77,8 +75,8 @@ To verify the state of the networks, run ```ifconfig```. You should see that the
 Now, modify ```/etc/hosts``` so the machine knows its hostname. For this step, you will need to know ```[NNN]```, the last octet of your public IP address. It can be obtained by running ```ifconfig``` and looking at the entry for ```eno1```.
 
 ```
-echo "171.64.116.[NNN] hpcc-cluster-[C].stanford.edu" >> /etc/hosts
+echo "171.64.55.[NNN] hpcc-cluster-[C].stanford.edu" >> /etc/hosts
 echo "10.1.1.1 hpcc-cluster-[C].localdomain hpcc-cluster-[C]" >> /etc/hosts
 ```
 
-If you have completed these steps, you are now done with Week #1 tasks. If your partner has not completed their assignment yet, please notify them so they can start as soon as possible. Please message course staff on Canvas if you need help provisioning the operating system.
+If you have completed these steps, you are now done with Week #1 tasks. Please message course staff on Canvas if you need help provisioning the operating system.
