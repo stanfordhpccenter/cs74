@@ -9,7 +9,7 @@
 2. In the command line, SSH into the remote server login node using the username and password that we provide. Replace ```[user]``` with your assigned username.
 
 ```
-ssh [user]@hpcc-cluster-login-external.stanford.edu
+ssh [user]@cs74.stanford.edu
 ```
 
 You'll be prompted for your password. Type in your password and press enter. Your keystrokes will not be visible on the command line.
