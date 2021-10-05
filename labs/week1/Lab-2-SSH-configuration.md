@@ -66,6 +66,8 @@ The key's randomart image is:
 
 **2: Copy the SSH Public Key to the Server - For Windows Users ONLY**
 
+------
+
 **REQUIRED only for Windows account names containing whitespace:**
 
 Revise the last string of your public key **before** copying your public key to the remote server.
@@ -78,6 +80,8 @@ Revise this by adding quotation marks:
 ```
 "User Name@[laptop-local-address]"
 ```
+
+------
 
 Run the following (in one line), replacing [username] with your HPCC username, which we're providing. This sends a copy of your public key to the remote server:
 
