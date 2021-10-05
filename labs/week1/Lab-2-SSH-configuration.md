@@ -100,7 +100,7 @@ Type _yes_ and press the enter key.
 
 You'll receive a response like this:
 ```
-Warning: Permanently added 'hpcc-cluster,171.64.55.130' (ECDSA) to list of hosts
+Warning: Permanently added 'cs74,171.64.55.130' (ECDSA) to list of hosts
 ```
 
 You'll be prompted for your HPCC password, which we're providing.
@@ -120,7 +120,7 @@ Run the following, replacing [username] with your HPCC username, which we're pro
 
 ssh-copy-id [username]@cs74.stanford.edu
 ```
-~$ ssh-copy-id david@cs74.stanford.edu
+~$ ssh-copy-id davidron@cs74.stanford.edu
 ```
 
 You will get a warning like this. If you entered the server address correctly, you're fine.
@@ -128,7 +128,7 @@ Type **yes** and press the enter key.
 
 ```
 /usr/bin/ssh-copy-id: INFO: Source of key(s): "/home/kali/.ssh/id_rsa.pub"
-The authenticity of host 'hpcc-cluster (171.64.55.130)' can't be established.
+The authenticity of host 'cs74 (171.64.55.130)' can't be established.
 ECDSA key fingerprint is SHA256:20crZ5XWQNxMgW0BZo3mE97j7z2ThNoULDzVeUAVeCg.
 Are you sure you want to continue connecting (yes/no/[fingerprint]) yes?
 ```
@@ -145,7 +145,7 @@ You'll be prompted for your HPCC password, which we're providing.
 Type your password and press enter.
 Note: Your keystrokes will not appear on the screen.
 ```
-davidron@hpcc-cluster.stanford.edu's password:
+davidron@cs74.stanford.edu's password:
 ```
 
 You'll receive a response like this:
@@ -166,5 +166,5 @@ ssh [your username]@hpcc-cluster.stanford.edu
 If SSH key authentication worked, you should get a response like this:
 ```
 Last login: Thu Jul 15 20:11:39 2021 from dn2lk5ehf.stanford.edu
-[davidron@hpcc-cluster ~]$
+[davidron@cs74 ~]$
 ```
