@@ -64,7 +64,7 @@ The key's randomart image is:
 ```
 ----
 
-**2: Copy the SSH Public Key to the Server - For Windows Users ONLY**
+**2 - ONLY For Windows Users: Copy the SSH Public Key to the Server**
 
 ***
 
