@@ -160,7 +160,7 @@ Number of key(s) added: 1
 Run the following, replacing _[your username]_ with your HPCC username, which we're providing:
 
 ```
-ssh [your username]@hpcc-cluster.stanford.edu
+ssh [your username]@cs74.stanford.edu
 ```
 
 If SSH key authentication worked, you should get a response like this:
