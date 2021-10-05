@@ -86,12 +86,12 @@ Revise this by adding quotation marks:
 Run the following (in one line), replacing [username] with your HPCC username, which we're providing. This sends a copy of your public key to the remote server:
 
 ```
-cat ~/.ssh/id_rsa.pub | ssh [username]@hpcc-cluster.stanford.edu "mkdir -p ~/.ssh && cat >> ~/.ssh/authorized_keys"
+cat ~/.ssh/id_rsa.pub | ssh [username]@cs74.stanford.edu "mkdir -p ~/.ssh && cat >> ~/.ssh/authorized_keys"
 ```
 
 After you copy the SSH public key to the server, you will see a warning like this:
 ```
-The authenticity of host 'hpcc-cluster (171.64.55.130)' can't be established.
+The authenticity of host 'cs74 (171.64.55.130)' can't be established.
 ECDSA key fingerprint is SHA256:20rcvjngfjkrjjank45436tkjfhsdkfsdHjosfjJhk.
 Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
 ```
@@ -107,7 +107,7 @@ You'll be prompted for your HPCC password, which we're providing.
 Type your password and press enter.
 **NOTE** Your keystrokes will not appear on the screen.
 ```
-user@hpcc-cluster.stanford.edu's password:
+[user]@cs74.stanford.edu's password:
 ```
 
 You likely won't receive a response after entering the password.
@@ -118,9 +118,9 @@ You likely won't receive a response after entering the password.
 
 Run the following, replacing [username] with your HPCC username, which we're providing:
 
-ssh-copy-id [username]@hpcc-cluster.stanford.edu
+ssh-copy-id [username]@cs74.stanford.edu
 ```
-~$ ssh-copy-id david@hpcc-cluster.stanford.edu
+~$ ssh-copy-id david@cs74.stanford.edu
 ```
 
 You will get a warning like this. If you entered the server address correctly, you're fine.
