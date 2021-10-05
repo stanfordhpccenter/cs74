@@ -64,7 +64,7 @@ The key's randomart image is:
 ```
 ----
 
-**2a: ONLY For Windows Users - Copy the SSH Public Key to the Server**
+**2A: ONLY For Windows Users - Copy the SSH Public Key to the Server**
 
 ***
 
@@ -114,7 +114,7 @@ You likely won't receive a response after entering the password.
 
 ----
 
-**2: ONLY For MacOS & Linux Users - Copy the SSH Public Key to the Server**
+**2B: ONLY For MacOS & Linux Users - Copy the SSH Public Key to the Server**
 
 Run the following, replacing [username] with your HPCC username, which we're providing:
 
