@@ -18,12 +18,10 @@ The only number that will change between your cluster and the one used in this e
 
 Because you won't have physical access to the computers this quarter, we are going to follow a bit of a different process to install the operating system. You'll need to initialize the master node for your cluster and set it up for network boot, which will install the OS onto the machine.
 
-NOTE: Proceed only if you've completed the SSH key configuration for your assigned cluster.
-
-SSH into ```hpcc-cluster-[C]``` in order to execute ipmitool commands:
+SSH into ```cs74``` in order to execute ipmitool commands:
 
 ```
-ssh hpcc-cluster-[C].stanford.edu
+ssh cs74.stanford.edu
 ```
 
 Set the next boot to PXE:
@@ -52,12 +50,12 @@ Once you reach a screen that says PXE Boot, the process is working so far. The e
 
 **If nothing is happening on the screen, the operating system may not have been provisioned to this specific machine. Please reach out to course staff and they will provision it.**
 
-In a new terminal window, we need to disconnect the SOL session. SSH back into ```hpcc-cluster```, run the deactivate command, and close the terminal windows that you used to connect to ```hpcc-cluster```:
+In a new terminal window, we need to disconnect the SOL session. SSH back into ```cs74```, run the deactivate command, and close the terminal windows that you used to connect to ```cs74```:
 
 ```
-ssh [sunetid]@hpcc-cluster.stanford.edu
+ssh [user]@cs74.stanford.edu
 ...
-[sunetid@hpcc-cluster ~]# ipmitool -H hpcc-cluster-[C]-ipmi -U USERID -P PASSW0RD -I lanplus sol deactivate
+[user@cs74 ~]# ipmitool -H hpcc-cluster-[C]-ipmi -U USERID -P PASSW0RD -I lanplus sol deactivate
 ```
 
 #### Configure Master Node
