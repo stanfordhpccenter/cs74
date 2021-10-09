@@ -57,3 +57,7 @@ systemctl enable slurmctld
 systemctl start slurmctld
 ```
 
+Add Slurm support to the compute nodes:
+```
+yum -y --installroot=$CHROOT install ohpc-slurm-client
+```
