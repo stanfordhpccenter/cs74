@@ -1,5 +1,10 @@
 # Installing and Configuring OpenHPC
 
+NOTE:
+```
+Be sure to first connect to [user]@cs74.stanford.edu
+```
+
 Connect to the master node (default password is stanford):
 ```
 ssh [user]@hpcc-cluster-[C].stanford.edu
@@ -54,65 +59,6 @@ Configure time services:
 systemctl enable ntpd.service
 echo "server time.stanford.edu" >> /etc/ntp.conf
 systemctl restart ntpd
-```
-
-Install Slurm:
-```
-yum -y install ohpc-slurm-server
-```
-
-Configure Slurm to add master node hostname:
-```
-perl -pi -e "s/ControlMachine=\S+/ControlMachine=hpcc-cluster-[C]/" /etc/slurm/slurm.conf
-```
-
-Change default node state for nodes returning to service (automatically return to services if all resources report correctly):
-```
-perl -pi -e "s/ReturnToService=1/ReturnToService=2/" /etc/slurm/slurm.conf
-```
-
-Now, we need to configure the hostnames inside the Slurm settings. Remember, the hostname for the compute node is: compute-[C], where [C] is the cluster number (i.e. 15).
-
-This is what the end of ```/etc/slurm/slurm.conf``` will look like at this point:
-```
-NodeName=c[1-4] Sockets=2 CoresPerSocket=8 ThreadsPerCore=2 State=UNKNOWN
-PartitionName=normal Nodes=c[1-4] Default=YES MaxTime=24:00:00 State=UP
-ReturnToService=2
-```
-
-Go ahead and start a text editor (nano, vim, emacs) and start editing /etc/slurm/slurm.conf. Replace ```c[1-4]``` in the first line with your compute node hostname. Carrying on with the previous example, if our cluster name is ```hpcc-cluster-15```, the compute node scheme would be ```compute-15```.
-
-For the second line, you can set ```Nodes=ALL```. In addition to the hostname configuration, we need to let Slurm know the specifics about our hardware. Run the lscpu command on your master node. The output should resemble the following:
-
-```
-[root@me344-cluster-15 ~]# lscpu
-Architecture:          x86_64
-CPU op-mode(s):        32-bit, 64-bit
-Byte Order:            Little Endian
-CPU(s):                32
-On-line CPU(s) list:   0-31
-Thread(s) per core:    2
-Core(s) per socket:    8
-Socket(s):             2
-...
-```
-
-Note the following options in the Slurm configuration ```ThreadsPerCore```, ```CoresPerSocket```, ```Sockets```. If the values that Slurm displays resemble what is being outputted by the respective ```lscpu``` fields, then you are good to go. Otherwise, update the Slurm settings to match what ```lscpu``` outputs.
-
-By the end, this is what the end of your Slurm configuration ```(/etc/slurm/slurm.conf)``` should look like:
-```
-NodeName=compute-[C] Sockets=2 CoresPerSocket=8 ThreadsPerCore=2 State=UNKNOWN
-PartitionName=normal Nodes=ALL Default=YES MaxTime=24:00:00 State=UP
-ReturnToService=2
-```
-Hint: ```Nodes=ALL``` is case insensitive — you must format it this way or it will not work.
-
-Start and enable Slurm and Munge:
-```
-systemctl enable munge
-systemctl start munge
-systemctl enable slurmctld
-systemctl start slurmctld
 ```
 
 Configure Warewulf, our provisioning utility to use the local network ```(enp6s0f1)``` as the provisioning interface:
@@ -177,11 +123,6 @@ Enable DNS on compute nodes:
 cp -p /etc/resolv.conf $CHROOT/etc/resolv.conf
 ```
 
-Add Slurm support to the compute nodes:
-```
-yum -y --installroot=$CHROOT install ohpc-slurm-client
-```
-
 Install time service:
 ```
 yum -y --installroot=$CHROOT install ntp
@@ -239,8 +180,6 @@ Certain files need to be added Warewulf sync list in order to ensure functionali
 wwsh file import /etc/passwd
 wwsh file import /etc/group
 wwsh file import /etc/shadow
-wwsh file import /etc/slurm/slurm.conf
-wwsh file import /etc/munge/munge.key
 ```
 
 Set provisioning interface as the default networking device:
@@ -313,18 +252,8 @@ PING compute-1-12.localdomain (10.1.12.2) 56(84) bytes of data.
 64 bytes from compute-1.localdomain (10.1.2): icmp_seq=3 ttl=64 time=0.253 m
 ```
 
-#### Kerberos Authentication
 
-Kerberos is an authentication method that the HPCC uses, allowing cluster users to sign in to machines using their SUNet IDs. First, install Kerberos on your master node, and copy the configuration file to the me344-cluster machine:
-
-When specifying your SUNet ID, do not use your email address, only the ID.
-```
-yum -y install pam_krb5
-scp [sunetid]@me344-cluster:/etc/krb5.conf /etc/
-authconfig --enablekrb5 --update
-```
-
-Now, add your and your partner(s) SUNet IDs to the system:
+Add your and your partner(s) SUNet IDs to the system:
 ```
 useradd -m [sunetid]
 useradd -m [partner_sunetid]
