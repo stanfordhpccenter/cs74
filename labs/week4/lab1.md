@@ -61,3 +61,9 @@ Add Slurm support to the compute nodes:
 ```
 yum -y --installroot=$CHROOT install ohpc-slurm-client
 ```
+
+Import Slurm and Munge files to Warewulf database
+```
+wwsh file import /etc/slurm/slurm.conf
+wwsh file import /etc/munge/munge.key
+```
