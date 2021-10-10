@@ -188,18 +188,19 @@ Extremely Important: you will need to run the above command every time you make 
 
 Now, we will be adding the compute nodes to the Warewulf database. Please refer to this page to obtain the IP and MAC addresses.
 
-The following information is very important: the IP addresses and hostnames of the compute nodes will need to be assigned very carefully. For this class, we are following this pattern for the naming of the nodes: ```compute-[C]```.
+The following information is very important: the IP addresses and hostnames of the compute nodes will be pre-assigned. For this class, we are using a class B IP address space, meaning there are over 65K potential IP addresses that can be utilized. 
 
-For the IP address, it is defined this way: ```10.[C].2```. So, if you wanted to define the compute nodes for ```hpcc-cluster-1```, you would run these commands. Of course, remember to add the MAC addresses for each corresponding node. As a reminder, they can be found here.
+The compute node IP address is: ```10.10.1.1```. Of course, remember to add the MAC addresses for each corresponding node. They can be found here:
+https://github.com/stanfordhpccenter/cs74/blob/main/network-information.md
 
 Please make sure to replace ```MAC_ADDR``` with the correct address for the node you are adding (as well as the hostname and IP address)!
 ```
-wwsh -y node new compute-1 --ipaddr=10.1.2 --hwaddr=MAC_ADDR
+wwsh -y node new compute-1-1 --ipaddr=10.10.1.1 --hwaddr=MAC_ADDR
 ```
 
 Now, we are going to define the provisioning image for the compute nodes:
 ```
-wwsh -y provision set "compute-*" --vnfs=centos7 --bootstrap=`uname -r` --files=dynamic_hosts,passwd,group,shadow,network,slurm.conf,munge.key
+wwsh -y provision set "compute-*" --vnfs=centos7 --bootstrap=`uname -r` --files=dynamic_hosts,passwd,group,shadow,network
 ```
 
 Restart DHCP and update PXE:
@@ -208,73 +209,42 @@ systemctl restart dhcpd
 wwsh pxe update
 ```
 
-We used ipmitool a bit earlier, and we will need to use it again. Using part of the schema defined above, the ipmi addresses for the nodes will follow this formula: ```10.[C].3```. Notice the 3 at the end. So, to restart the compute nodes, you would run the following:
+We used ipmitool a bit earlier, and we will need to use it again. The IPMI IP address for the compute node (compute-1-1) is: ```10.2.2.2```. So, to restart the compute nodes, you would run the following:
 
 Hint: you need to run the command below once (once for your one compute node).
 ```
-ipmitool -H 10.[C].3 -U USERID -P PASSW0RD chassis power cycle
+ipmitool -H 10.2.2.2 -U USERID -P PASSW0RD chassis power cycle
 ```
-
-For instance, the ipmi address for ```compute-1``` is ```10.1.3```.
 
 You can view progress of the installation of the operating system onto compute nodes with the following command line option:
 ```
 tail -f /var/log/messages
 ```
 
-The compute nodes will go through a DHCP and PXE process, and end with a mount process. To quit watching the log, use ctrl+c.
+The compute node will go through a DHCP and PXE process, and end with a mount process. To quit watching the log, use ctrl+c.
 
-To verify that the compute nodes have booted, you can ping their hostname, i.e:
+To verify that the compute node has booted, you can ping their hostname, i.e:
 ```
-ping compute-1
+ping compute-1-1
 ```
 
 The output should resemble this:
 ```
-PING compute-1-12.localdomain (10.1.12.2) 56(84) bytes of data.
-64 bytes from compute-1.localdomain (10.1.2): icmp_seq=1 ttl=64 time=0.244 ms
-64 bytes from compute-1.localdomain (10.1.2): icmp_seq=2 ttl=64 time=0.257 ms
-64 bytes from compute-1.localdomain (10.1.2): icmp_seq=3 ttl=64 time=0.253 m
+PING compute-1-1.localdomain (10.10.1.1) 56(84) bytes of data.
+64 bytes from compute-1-1.localdomain (10.10.1.1): icmp_seq=1 ttl=64 time=0.244 ms
+64 bytes from compute-1-1.localdomain (10.10.1.1): icmp_seq=2 ttl=64 time=0.257 ms
+64 bytes from compute-1-1.localdomain (10.10.1.1): icmp_seq=3 ttl=64 time=0.253 m
 ```
 
 
-Add your and your partner(s) SUNet IDs to the system:
+Add a regular user account for yourself to the system:
 ```
-useradd -m [sunetid]
-useradd -m [partner_sunetid]
+useradd -m [username]
 ```
 
-Push file changes to the compute nodes:
+Push file changes to the database
 ```
 wwsh file resync passwd shadow group
-```
-
-If the above command does not work, using pdsh is a fall-back solution:
-```
-pdsh -w compute-[C] /warewulf/bin/wwgetfiles
-```
-
-To check if the Kerberos configuration worked, run the following commands (# denote comments, not commands you need to run):
-```
-# This command checks if the "useradd" comand was successful. Once you log into the user, immediately logout or click Ctrl-D.
-su - [sunetid]
-logout
-kinit [sunetid]
-klist
-kdestroy
-klist
-```
-
-The following commands can be used to check the uptime on the compute nodes:
-```
-pdsh -w compute-[C] uptime
-# OR
-wwsh ssh c* uptime
-```
-
-Output should resemble:
-```
-compute-1:  19:34:16 up  5:24,  0 users,  load average: 0.00, 0.01, 0.04
 ```
 
 Important: remember when we used wwsh file import to sync files between the master and compute nodes? To resync them at any time, you can run the following command:
