@@ -21,7 +21,7 @@ Because you won't have physical access to the computers this quarter, we are goi
 SSH into ```cs74``` in order to execute ipmitool commands:
 
 ```
-ssh cs74.stanford.edu
+ssh [user]@cs74.stanford.edu
 ```
 
 Set the next boot to PXE:
