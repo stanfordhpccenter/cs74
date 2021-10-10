@@ -252,4 +252,3 @@ Important: remember when we used wwsh file import to sync files between the mast
 wwsh file resync
 ```
 
-You might find yourself using this command if you make any changes to the Slurm configuration, add any users to the machine, or modify other files that you may have selected to sync.
