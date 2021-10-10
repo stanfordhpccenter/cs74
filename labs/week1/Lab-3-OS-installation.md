@@ -10,7 +10,7 @@ Once assigned your cluster, be sure to note the entire hostname and especially t
 
 Important: Your assigned cluster is made up of two computers: one master node and one compute node. Continuing with the previous example, if you are assigned ```hpcc-cluster-15```, the hostname of the master node is ```hpcc-cluster-15```, and the compute nodes has a numerically assigned identifier ```1```, i.e. the compute node's host name will be ```compute-1-1```.
 
-The only number that will change between your cluster and the one used in this example is ```[C]```, which is 15 in this case but can range from 1 - 15. Pay close attention to the details of your cluster assignment!
+The only number that will change between your cluster and the one used in this example is ```[C]```, which is 15 in this case but can range from 1 - 48. Pay close attention to the details of your cluster assignment!
 
 ## Week #1
 
