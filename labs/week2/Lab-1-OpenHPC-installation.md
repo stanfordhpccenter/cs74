@@ -220,6 +220,10 @@ You can view progress of the installation of the operating system onto compute n
 ```
 tail -f /var/log/messages
 ```
+NOTE: There is an annoying bug with the avahi-daemon (mDNS/DNS) where it prints messages to /var/log/messages at a high rate. You can disable by executing the following command:
+```
+systemctl disable avahi-daemon ; systemctl stop avahi-daemon
+```
 
 The compute node will go through a DHCP and PXE process, and end with a mount process. To quit watching the log, use ctrl+c.
 
