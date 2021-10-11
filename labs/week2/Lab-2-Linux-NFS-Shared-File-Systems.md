@@ -21,3 +21,12 @@ exportfs -a
 systemctl restart nfs-server
 systemctl enable nfs-server
 ```
+Reassemble VNFS image
+```
+wwvnfs --chroot $CHROOT
+```
+
+Use IPMI to restart the compute node as we don't have a complete VNFS image created:
+```
+ipmitool -H 10.2.2.2 -U USERID -P PASSW0RD chassis power cycle
+```
