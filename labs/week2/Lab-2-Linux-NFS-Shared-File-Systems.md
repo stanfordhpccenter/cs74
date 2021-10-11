@@ -36,7 +36,13 @@ You can view progress of the installation of the operating system onto compute n
 tail -f /var/log/messages
 ```
 
-The compute node will go through a DHCP and PXE process, and end with a mount process. To quit watching the log, use ctrl+c.
+The compute node will go through a DHCP and PXE process, and end with a mount process similar to the following:
+```
+Oct 11 12:38:36 hpcc-cluster-18 rpc.mountd[13386]: authenticated mount request from 10.10.1.1:794 for /home (/home)
+Oct 11 12:38:36 hpcc-cluster-18 rpc.mountd[13386]: authenticated mount request from 10.10.1.1:866 for /opt/ohpc/pub (/opt/ohpc/pub)
+```
+
+To quit watching the log, use ctrl+c.
 
 To verify that the compute node has booted, you can ping their hostname, i.e:
 ```
@@ -49,4 +55,10 @@ PING compute-1-1.localdomain (10.10.1.1) 56(84) bytes of data.
 64 bytes from compute-1-1.localdomain (10.10.1.1): icmp_seq=1 ttl=64 time=0.244 ms
 64 bytes from compute-1-1.localdomain (10.10.1.1): icmp_seq=2 ttl=64 time=0.257 ms
 64 bytes from compute-1-1.localdomain (10.10.1.1): icmp_seq=3 ttl=64 time=0.253 m
+```
+You should be able to SSH to the compute node at this point:
+```
+ssh compute-1-1
+or
+ssh [user]@compute-1-1
 ```
