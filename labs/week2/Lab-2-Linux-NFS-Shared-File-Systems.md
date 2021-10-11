@@ -1,4 +1,12 @@
 # Network File System (NFS) Mount Configuration
+NOTE:
+```
+Be sure to first connect to [user]@cs74.stanford.edu
+```
+Connect to the master node (default password is stanford):
+```
+ssh [user]@hpcc-cluster-[C].stanford.edu
+```
 Add NFS client mounts of /home and /opt/ohpc/pub to base image:
 ```
 echo "10.1.1.1:/home /home nfs nfsvers=3,nodev,nosuid,noatime 0 0" >> $CHROOT/etc/fstab
