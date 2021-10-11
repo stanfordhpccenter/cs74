@@ -26,7 +26,7 @@ Reassemble VNFS image
 wwvnfs --chroot $CHROOT
 ```
 
-Use IPMI to restart the compute node as we don't have a complete VNFS image created:
+Restart the compute node using warewulf shell:
 ```
-ipmitool -H 10.2.2.2 -U USERID -P PASSW0RD chassis power cycle
+wwsh ssh compute-* reboot
 ```
