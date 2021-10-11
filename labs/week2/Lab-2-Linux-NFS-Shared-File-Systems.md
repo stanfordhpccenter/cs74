@@ -30,3 +30,23 @@ Restart the compute node using warewulf shell:
 ```
 wwsh ssh compute-* reboot
 ```
+
+You can view progress of the installation of the operating system onto compute nodes with the following command line option:
+```
+tail -f /var/log/messages
+```
+
+The compute node will go through a DHCP and PXE process, and end with a mount process. To quit watching the log, use ctrl+c.
+
+To verify that the compute node has booted, you can ping their hostname, i.e:
+```
+ping compute-1-1
+```
+
+The output should resemble this:
+```
+PING compute-1-1.localdomain (10.10.1.1) 56(84) bytes of data.
+64 bytes from compute-1-1.localdomain (10.10.1.1): icmp_seq=1 ttl=64 time=0.244 ms
+64 bytes from compute-1-1.localdomain (10.10.1.1): icmp_seq=2 ttl=64 time=0.257 ms
+64 bytes from compute-1-1.localdomain (10.10.1.1): icmp_seq=3 ttl=64 time=0.253 m
+```
