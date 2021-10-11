@@ -225,7 +225,7 @@ NOTE: There is an annoying bug with the avahi-daemon (mDNS/DNS) where it prints 
 systemctl disable avahi-daemon ; systemctl stop avahi-daemon
 ```
 
-The compute node will go through a DHCP and PXE process, and end with a mount process. To quit watching the log, use ctrl+c.
+The compute node will go through a DHCP and PXE process. To quit watching the log, use ctrl+c.
 
 To verify that the compute node has booted, you can ping their hostname, i.e:
 ```
@@ -256,3 +256,16 @@ Important: remember when we used wwsh file import to sync files between the mast
 wwsh file resync
 ```
 
+You can SSH to the compute node to verify it's online and verify your user account has been "synced" to the compute node: 
+```
+ssh compute-1-1
+cat /etc/passwd
+```
+
+
+If your username is not the last entry it's possible to "force" an update rather than waiting for the process to complete at the scheuduled update interval. Run the following command from the compute node:
+```
+/warewulf/bin/wwgetfiles
+```
+
+Your username should appear in /etc/passwd at this point.
