@@ -38,8 +38,8 @@ tail -f /var/log/messages
 
 The compute node will go through a DHCP and PXE process, and end with a mount process similar to the following:
 ```
-Oct 11 12:38:36 hpcc-cluster-18 rpc.mountd[13386]: authenticated mount request from 10.10.1.1:794 for /home (/home)
-Oct 11 12:38:36 hpcc-cluster-18 rpc.mountd[13386]: authenticated mount request from 10.10.1.1:866 for /opt/ohpc/pub (/opt/ohpc/pub)
+hpcc-cluster-18 rpc.mountd[13386]: authenticated mount request from 10.10.1.1:794 for /home (/home)
+hpcc-cluster-18 rpc.mountd[13386]: authenticated mount request from 10.10.1.1:866 for /opt/ohpc/pub (/opt/ohpc/pub)
 ```
 
 To quit watching the log, use ctrl+c.
