@@ -27,7 +27,7 @@ yum -y install singularity
 
 4. Check what's in the ```singularity``` package:
 ```
-rpm  -ql singularity
+rpm -ql singularity
 ```
 
 5. Check the dependencies of ```singularity```:
