@@ -15,7 +15,7 @@ ssh hpcc-cluster-[C].stanford.edu
 yum install singularity
 ```
 
-2. Remove ```singularity``` and any packages that depend on lapack:
+2. Remove ```singularity``` and any packages that depend on ```singularity```:
 ```
 yum remove singularity
 ```
