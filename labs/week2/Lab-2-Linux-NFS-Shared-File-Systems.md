@@ -59,6 +59,8 @@ PING compute-1-1.localdomain (10.10.1.1) 56(84) bytes of data.
 You should be able to SSH to the compute node at this point:
 ```
 ssh compute-1-1
+```
 or
+```
 ssh [user]@compute-1-1
 ```
