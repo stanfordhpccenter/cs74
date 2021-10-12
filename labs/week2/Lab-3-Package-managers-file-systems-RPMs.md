@@ -34,7 +34,7 @@ rpm -ql singularity
 ```
 rpm -qR singularity
 ```
-6. View location of singularity
+6. View location of singularity:
 ```
 which singularity
 ```
@@ -46,7 +46,7 @@ which singularity
 yum -y --installroot=$CHROOT install singularity
 ```
 
-2. Re-assemble VNFS image
+2. Re-assemble VNFS image:
 ```
 wwvnfs --chroot $CHROOT
 ```
@@ -55,7 +55,7 @@ wwvnfs --chroot $CHROOT
 ```
 wwsh ssh compute-* reboot
 ```
-4. View location of singularity
+4. View location of singularity:
 ```
 chroot $CHROOT
 which singularity
@@ -63,7 +63,7 @@ which singularity
 
 ### Install a package in a shared location
 
-1. Install the ```ohpc``` singularity package in a shared NFS location ```/opt/ohpc/pub/~```
+1. Install the ```ohpc``` singularity package in a shared NFS location ```/opt/ohpc/pub/~```:
 ```
 yum -y install singularity-ohpc
 ```
@@ -73,17 +73,17 @@ yum -y install singularity-ohpc
 ml singularity
 ```
 
-3. View location of singularity
+3. View location of singularity:
 ```
 which singularity
 ```
 
-4. Purge loaded modules
+4. Purge loaded modules:
 ```
 ml purge
 ```
 
-5. View location of singularity
+5. View location of singularity:
 ```
 which singularity
 ```
