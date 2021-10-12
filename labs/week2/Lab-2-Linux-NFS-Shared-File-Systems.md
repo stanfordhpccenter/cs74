@@ -21,7 +21,7 @@ exportfs -a
 systemctl restart nfs-server
 systemctl enable nfs-server
 ```
-Reassemble VNFS image
+Reassemble VNFS image:
 ```
 wwvnfs --chroot $CHROOT
 ```
