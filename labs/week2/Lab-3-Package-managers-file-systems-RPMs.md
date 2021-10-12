@@ -2,7 +2,7 @@
 
 Remember to replace ```[C]``` with your assigned cluster number. For example, if you are assigned cluster 10, then ```hpcc-cluster-[C]``` would be entered as ```hpcc-cluster-10```.
 
-SSH into your cluster:
+SSH into your cluster. Remember to first enter through the login node:
 
 ```
 ssh hpcc-cluster-[C].stanford.edu
