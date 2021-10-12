@@ -31,13 +31,13 @@ systemctl stop firewalld
 systemctl disable firewalld
 ```
 
-Add Kernel Packages
+Add Kernel Packages:
 ```
 yum -y install http://vault.centos.org/7.7.1908/os/x86_64/Packages/kernel-debug-3.10.0-1062.el7.x86_64.rpm
 yum -y install http://vault.centos.org/7.7.1908/os/x86_64/Packages/kernel-debug-devel-3.10.0-1062.el7.x86_64.rpm
 ```
 
-Lock Kernel Version
+Lock Kernel Version:
 ```
 yum -y install yum-plugin-versionlock 
 yum versionlock *-3.10.0-1062.el7.x86_64
@@ -96,7 +96,7 @@ Build initial CHROOT image:
 wwmkchroot centos-7 $CHROOT
 ```
 
-Add Kernel Packages
+Add Kernel Packages:
 ```
 yum -y --installroot=$CHROOT install http://vault.centos.org/7.7.1908/os/x86_64/Packages/kernel-3.10.0-1062.el7.x86_64.rpm
 yum -y --installroot=$CHROOT install http://vault.centos.org/7.7.1908/os/x86_64/Packages/kernel-headers-3.10.0-1062.el7.x86_64.rpm
@@ -105,7 +105,7 @@ yum -y --installroot=$CHROOT install http://vault.centos.org/7.7.1908/os/x86_64/
 yum -y --installroot=$CHROOT install http://vault.centos.org/7.7.1908/os/x86_64/Packages/kernel-debug-devel-3.10.0-1062.el7.x86_64.rpm
 ```
 
-Lock Kernel Version
+Lock Kernel Version:
 ```
 yum -y --installroot=$CHROOT install yum-plugin-versionlock 
 chroot $CHROOT
@@ -151,7 +151,7 @@ Define compute node forwarding destination:
 echo "*.* @10.1.1.1:514" >> $CHROOT/etc/rsyslog.conf
 ```
 
-Disable most logging on compute nodes. Emergency and boot logs will remain on compute nodes.
+Disable most logging on compute nodes. Emergency and boot logs will remain on compute nodes:
 ```
 perl -pi -e "s/^\*\.info/\\#\*\.info/" $CHROOT/etc/rsyslog.conf
 perl -pi -e "s/^authpriv/\\#authpriv/" $CHROOT/etc/rsyslog.conf
@@ -246,7 +246,7 @@ Add a regular user account for yourself to the system:
 useradd -m [username]
 ```
 
-Push file changes to the database
+Push file changes to the database:
 ```
 wwsh file resync passwd shadow group
 ```
