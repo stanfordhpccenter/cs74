@@ -15,13 +15,13 @@ yum -y install numactl-libs atk tcsh tk python-devel rpm-build
 Uncompress installation directory:
 
 ```
-tar -zxvf MLNX_OFED_LINUX-5.0-2.1.8.0-rhel7.7-x86_64-ext.tgz
+tar -zxvf MLNX_OFED_LINUX-5.1-0.6.6.0-rhel7.7-x86_64.tgz
 ```
 
 Change into installation directory:
 
 ```
-cd MLNX_OFED_LINUX-5.0-2.1.8.0-rhel7.7-x86_64-ext
+cd MLNX_OFED_LINUX-5.1-0.6.6.0-rhel7.7-x86_64
 ```
 
 Install OFED (again, do not be alarmed if you do not receive any output for several minutes):
