@@ -133,7 +133,7 @@ cd ~/week3/mellanox
 Uncompress installation files:
 
 ```
-tar -jxvf *.tbz && mv hpcx-v2.6.0-gcc-MLNX_OFED_LINUX-5.0-1.0.0.0-redhat7.7-x86_64 /opt/ohpc/pub/apps/hpcx-v2.6.0
+tar -jxvf *.tbz && mv hpcx-v2.8.1-gcc-MLNX_OFED_LINUX-5.1-0.6.6.0-redhat7.7-x86_64 /opt/ohpc/pub/apps/hpcx-v2.8.1
 ```
 
 Load compilation modules on your master node:
@@ -145,7 +145,7 @@ module load gnu8 intel
 Save HPC-X directory in temporary variable and change into directory:
 
 ```
-export HPCX_DIR=/opt/ohpc/pub/apps/hpcx-v2.6.0 && cd $HPCX_DIR
+export HPCX_DIR=/opt/ohpc/pub/apps/hpcx-v2.8.1 && cd $HPCX_DIR
 ```
 
 Move installation files to appropriate location:
