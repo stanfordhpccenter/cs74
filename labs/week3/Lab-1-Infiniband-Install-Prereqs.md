@@ -67,5 +67,5 @@ yum -y install intel-compilers-devel-ohpc intel-mpi-devel-ohpc
 Download license from license server:
 
 ```
-echo 'setenv INTEL_LICENSE_FILE 28518@hpccenter-license.stanford.edu' >> /opt/ohpc/pub/modulefiles/intel/2020.4.912
+echo 'setenv INTEL_LICENSE_FILE 28518@hpccenter-license.stanford.edu' >> /opt/ohpc/pub/modulefiles/intel/19.1.3.304
 ```
