@@ -15,13 +15,13 @@ yum -y install numactl-libs atk tcsh tk python-devel rpm-build
 Uncompress installation directory:
 
 ```
-tar -zxvf MLNX_OFED_LINUX-5.1-0.6.6.0-rhel7.7-x86_64.tgz
+tar -zxvf MLNX_OFED_LINUX-5.0-1.0.0.0-rhel7.7-x86_64.tgz
 ```
 
 Change into installation directory:
 
 ```
-cd MLNX_OFED_LINUX-5.1-0.6.6.0-rhel7.7-x86_64
+cd MLNX_OFED_LINUX-5.0-1.0.0.0
 ```
 
 Install OFED (again, do not be alarmed if you do not receive any output for several minutes):
@@ -33,7 +33,7 @@ Install OFED (again, do not be alarmed if you do not receive any output for seve
 Move installation directory to CHROOT environment:
 
 ```
-mv ../MLNX_OFED_LINUX-5.0-2.1.8.0-rhel7.7-x86_64-ext.tgz $CHROOT
+mv ../MLNX_OFED_LINUX-5.0-1.0.0.0-rhel7.7-x86_64.tgz $CHROOT
 ```
 
 Install dependencies on CHROOT environment:
@@ -59,13 +59,13 @@ chroot $CHROOT
 Uncompress installation files:
 
 ```
-tar -zxvf MLNX_OFED_LINUX-5.0-2.1.8.0-rhel7.7-x86_64-ext.tgz
+tar -zxvf MLNX_OFED_LINUX-5.0-1.0.0.0-rhel7.7-x86_64.tgz
 ```
 
 Change into installation directory:
 
 ```
-cd MLNX_OFED_LINUX-5.0-2.1.8.0-rhel7.7-x86_64-ext
+cd MLNX_OFED_LINUX-5.0-1.0.0.0
 ```
 
 Install OFED:
@@ -77,7 +77,7 @@ Install OFED:
 Remove installation directory now that OFED has been installed on the CHROOT environment:
 
 ```
-cd .. && rm -rf MLNX_OFED_LINUX-5.0-2.1.8.0-rhel7.7-x86_64-ext*
+cd .. && rm -rf MLNX_OFED_LINUX-5.0-1.0.0.0*
 ```
 
 Exit the CHROOT environment:
@@ -89,7 +89,7 @@ exit
 Remove installation directory now that OFED has been installed on the master node:
 
 ```
-cd .. && rm -rf MLNX_OFED_LINUX-5.0-2.1.8.0-rhel7.7-x86_64-ext
+cd .. && rm -rf MLNX_OFED_LINUX-5.0-1.0.0.0
 ```
 
 Unmount the directories we mounted earlier as they are no longer needed in the CHROOT environment:
@@ -133,7 +133,7 @@ cd ~/week3/mellanox
 Uncompress installation files:
 
 ```
-tar -jxvf *.tbz && mv hpcx-v2.8.1-gcc-MLNX_OFED_LINUX-5.1-0.6.6.0-redhat7.7-x86_64 /opt/ohpc/pub/apps/hpcx-v2.8.1
+tar -jxvf *.tbz && mv hpcx-v2.7.0-gcc-MLNX_OFED_LINUX-5.0-1.0.0.0-redhat7.7-x86_64 /opt/ohpc/pub/apps/hpcx-v2.8.1
 ```
 
 Load compilation modules on your master node:
