@@ -23,6 +23,13 @@ Modify configuration file to ensure it works correctly on the cluster:
 perl -pi -e "s/family \"compiler\"//" /opt/ohpc/pub/modulefiles/gnu8/8.3.0
 ```
 
+Load the GNU 8 modulefile and add it to your .bashrc to load on subsequent connections
+
+```
+ml gnu8
+echo "ml gnu8" >> ~/.bashrc
+```
+
 ## Intel Compilers
 
 Install Intel Parallel Studio dependency:
