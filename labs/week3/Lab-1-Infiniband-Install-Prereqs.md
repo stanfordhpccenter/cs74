@@ -74,7 +74,8 @@ yum -y install intel-compilers-devel-ohpc intel-mpi-devel-ohpc
 Download license from license server:
 
 ```
-echo 'setenv INTEL_LICENSE_FILE 28518@hpccenter-license.stanford.edu' >> /opt/ohpcLoad the GNU 8 modulefile and add it to your .bashrc to load on subsequent connections
+echo 'setenv INTEL_LICENSE_FILE 28518@hpccenter-license.stanford.edu' >> /opt/ohpc/pub/modulefiles/intel/19.1.3.304
+```
 
 Load Intel Parallel Studio and Intel MPI modulefiles and add it to your .bashrc to load on subsequent connections
 
