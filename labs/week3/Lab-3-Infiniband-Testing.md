@@ -56,15 +56,6 @@ Compile software:
 make -j16 install 2>&1 | tee make.log
 ```
 
-Finalize installation by creating module for later use:
-
-```
-cd $HPCX_DIR
-cp -ar ompi.orig/tests ompi
-cp ~/week3/mellanox/hpcx /opt/ohpc/pub/modulefiles/
-cp ~/week3/intel-psxe/psxe-2020 /opt/ohpc/pub/modulefiles/intel/
-```
-
 # Configure Firewall and enable compute nodes to route traffic to the Internet
 
 ```
