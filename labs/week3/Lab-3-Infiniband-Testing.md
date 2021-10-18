@@ -55,9 +55,3 @@ Compile software:
 ```
 make -j16 install 2>&1 | tee make.log
 ```
-
-# Configure Firewall and enable compute nodes to route traffic to the Internet
-
-```
-sh ~/week3/firewall.sh
-```
