@@ -71,12 +71,6 @@ Install a program that ensures users of a system will be able to access the Inte
 yum -y install intel-compilers-devel-ohpc intel-mpi-devel-ohpc
 ```
 
-Point to license server in the Intel Parallel Studio modulefile:
-
-```
-echo 'setenv INTEL_LICENSE_FILE 28518@hpccenter-license.stanford.edu' >> /opt/ohpc/pub/modulefiles/intel/19.1.3.304
-```
-
 Load Intel Parallel Studio and Intel MPI modulefiles and add it to your .bashrc to load on subsequent connections
 
 ```
