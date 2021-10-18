@@ -47,7 +47,7 @@ cd openmpi-gitclone
 Configure compiler for installation:
 
 ```
-CC=icc CXX=icpc FC=ifort F77=ifort ./configure --prefix=$HPCX_DIR/ompi --with-libevent=internal --enable-mpi1-compatibility --without-xpmem --without-cuda --with-slurm --with-platform=contrib/platform/mellanox/optimized --with-hcoll=$HPCX_DIR/hcoll --with-ucx=$HPCX_DIR/ucx 2>&1 | tee configure.log
+CC=icc CXX=icpc FC=ifort ./configure --prefix=$HPCX_DIR/ompi --with-libevent=internal --enable-mpi1-compatibility --without-xpmem --without-cuda --with-slurm --with-platform=contrib/platform/mellanox/optimized --with-hcoll=$HPCX_DIR/hcoll --with-ucx=$HPCX_DIR/ucx 2>&1 | tee configure.log
 ```
 
 Compile software:
