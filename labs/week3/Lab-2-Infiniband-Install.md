@@ -65,7 +65,7 @@ tar -zxvf MLNX_OFED_LINUX-5.0-1.0.0.0-rhel7.7-x86_64.tgz
 Change into installation directory:
 
 ```
-cd MLNX_OFED_LINUX-5.0-1.0.0.0
+cd MLNX_OFED_LINUX-5.0-1.0.0.0-rhel7.7-x86_64
 ```
 
 Install OFED:
