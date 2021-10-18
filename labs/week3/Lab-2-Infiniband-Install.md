@@ -106,14 +106,10 @@ Rebuild the VNFS image, so the changes will be available on the compute nodes on
 wwvnfs --chroot=$CHROOT
 ```
 
-From the previous week, here are instructions for rebooting the compute nodes:
-
-> We used ipmitool a bit earlier, and we will need to use it again. Using part of the schema defined above, the ipmi addresses for the nodes will follow this formula: 10.[C].[N].3. Notice the 3 at the end. So, to restart the compute nodes, you would run the following:
-
-> Hint: you need to run the command below 3 times (once for each compute node).
+From the previous exercises, here are instructions for rebooting the compute node:
 
 ```
-ipmitool -H 10.[C].[N].3 -U USERID -P PASSW0RD chassis power cycle
+ipmitool -H 10.2.2.2 -U USERID -P PASSW0RD chassis power cycle
 ```
 
 # Mellanox HPC-X
