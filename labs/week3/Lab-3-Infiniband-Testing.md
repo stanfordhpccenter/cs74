@@ -61,7 +61,9 @@ make -j16 install 2>&1 | tee make.log
 1. Log into your cluster. Ensure you can log into a compute node and a switch.
 
 2. Check link Status. Status should be ```UP``` on all nodes.
-``` iblinkinfo```
+``` 
+iblinkinfo
+```
 
 3. Check if ```OpenSM``` is running. If not, enable it.
 ```
