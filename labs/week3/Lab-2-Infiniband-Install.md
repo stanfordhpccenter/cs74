@@ -89,7 +89,7 @@ exit
 Remove installation directory now that OFED has been installed on the master node:
 
 ```
-cd .. && rm -rf MLNX_OFED_LINUX-5.0-1.0.0.0-rhel7.7-x86_64
+cd ~/week3/mellanox && rm -rf MLNX_OFED_LINUX-5.0-1.0.0.0-rhel7.7-x86_64
 ```
 
 Unmount the directories we mounted earlier as they are no longer needed in the CHROOT environment:
