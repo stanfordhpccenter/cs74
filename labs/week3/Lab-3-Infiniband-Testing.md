@@ -71,6 +71,9 @@ service opensmd status
 ```
 
 4. Check OS version on all nodes.
+```
+uname -r
+```
 
 5. Check adapter type and version on all nodes.
 ```
