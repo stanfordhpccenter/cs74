@@ -56,4 +56,4 @@ Compile software:
 make -j16 install 2>&1 | tee make.log
 ```
 
-### Exercises 
+## Exercises 
