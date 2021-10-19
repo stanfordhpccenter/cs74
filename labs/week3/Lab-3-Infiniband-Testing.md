@@ -70,16 +70,19 @@ iblinkinfo
 service opensmd status
 ```
 
-4. Log into the switch. Check its software version.
+4. Check OS version on all nodes.
 
-5. Check OS version on all nodes.
-
-
-6. Check adapter type and version on all nodes.
+5. Check adapter type and version on all nodes.
 ```
 wwsh ssh compute-* lspci |grep -i mellanox
 ```
 
-7. Check firmware version on all nodes.
+6. Check firmware version on all nodes.
+```
+ibv_devinfo
+```
 
-8. Check ```MLNX_OFED``` version on all nodes.
+7. Check ```MLNX_OFED``` version on all nodes.
+```
+ofed_info -s
+```
