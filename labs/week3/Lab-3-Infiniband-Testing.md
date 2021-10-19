@@ -57,3 +57,27 @@ make -j16 install 2>&1 | tee make.log
 ```
 
 ## Exercises 
+
+1. Log into your cluster. Ensure you can log into a compute node and a switch.
+
+2. Check link Status. Status should be ```UP``` on all nodes.
+``` iblinkinfo```
+
+3. Check if ```OpenSM``` is running. If not, enable it.
+```
+service opensmd status
+```
+
+4. Log into the switch. Check its software version.
+
+5. Check OS version on all nodes.
+
+
+6. Check adapter type and version on all nodes.
+```
+wwsh ssh compute-* lspci |grep -i mellanox
+```
+
+7. Check firmware version on all nodes.
+
+8. Check ```MLNX_OFED``` version on all nodes.
