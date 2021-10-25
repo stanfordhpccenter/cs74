@@ -78,6 +78,11 @@ Reassemble VNFS image
 wwvnfs --chroot=$CHROOT
 ```
 
+Update provisioning to include new files imported to database:
+```
+wwsh -y provision set "compute-*" --vnfs=centos7 --bootstrap=`uname -r` --files=dynamic_hosts,passwd,group,shadow,network,slurm.conf,munge.key
+```
+
 Reboot compute node
 ```
 ssh compute-1-1 reboot
