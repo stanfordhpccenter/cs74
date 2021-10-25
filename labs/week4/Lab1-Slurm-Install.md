@@ -67,3 +67,18 @@ Import Slurm and Munge files to Warewulf database
 wwsh file import /etc/slurm/slurm.conf
 wwsh file import /etc/munge/munge.key
 ```
+Enable Slurm and Munge daemon in VNFS image:
+```
+chroot $CHROOT systemctl enable slurmd
+chroot $CHROOT systemctl enable munge
+```
+
+Reassemble VNFS image
+```
+wwvnfs --chroot=$CHROOT
+```
+
+Reboot compute node
+```
+ssh compute-1-1 reboot
+```
