@@ -93,6 +93,13 @@ Reboot compute node
 ssh compute-1-1 reboot
 ```
 
+View logs on the master node:
+```
+tail -f /var/log/messages
+and
+tail -f /var/log/slurmctld.log
+```
+
 NOTE: If you see an error like the following, restart ```munge```:
 ```
 [root@hpcc-cluster-[N] ~]# sinfo
