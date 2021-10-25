@@ -87,3 +87,10 @@ Reboot compute node
 ```
 ssh compute-1-1 reboot
 ```
+
+NOTE: If you see an error like the following, restart ```munge```:
+```
+[root@hpcc-cluster-[N] ~]# sinfo
+sinfo: error: If munged is up, restart with --num-threads=10
+sinfo: error: Munge encode failed: Failed to access "/var/run/munge/munge.socket.2": No such file or directory
+```
