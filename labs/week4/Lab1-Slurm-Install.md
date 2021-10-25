@@ -100,6 +100,13 @@ and
 tail -f /var/log/slurmctld.log
 ```
 
+Check status on master node:
+```
+[root@hpcc-cluster-17 ~]# sinfo
+PARTITION AVAIL  TIMELIMIT  NODES  STATE NODELIST
+normal*      up 1-00:00:00      1   idle compute-1-1
+```
+
 NOTE: If you see an error like the following, restart ```munge```:
 ```
 [root@hpcc-cluster-[N] ~]# sinfo
