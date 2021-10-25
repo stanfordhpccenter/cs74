@@ -73,6 +73,11 @@ chroot $CHROOT systemctl enable slurmd
 chroot $CHROOT systemctl enable munge
 ```
 
+Sync updated password and associated files following installation of Slurm client on VNFS image:
+```
+wwsh file resync passwd shadow group
+```
+
 Reassemble VNFS image
 ```
 wwvnfs --chroot=$CHROOT
