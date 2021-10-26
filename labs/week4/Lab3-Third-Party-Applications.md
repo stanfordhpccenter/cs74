@@ -265,7 +265,7 @@ Create a new notebook from "New"->"Python3"
 Rename the title
 
 Visualize molecular structure
-Type the following Python script and run
+Type the following Python script and ```run```
 
 ```
 import nglview as nv
