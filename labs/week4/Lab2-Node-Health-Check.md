@@ -27,3 +27,8 @@ Import into database:
 ```
 wwsh file import /etc/nhc/nhc.conf
 ```
+
+Update provisioning to include new files imported to database:
+```
+wwsh -y provision set "compute-*" --vnfs=centos7 --bootstrap=`uname -r` --files=dynamic_hosts,passwd,group,shadow,network,slurm.conf,munge.key,nhc.conf
+```
