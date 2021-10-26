@@ -134,8 +134,6 @@ jupyter nbextension enable nglview --py
 ```
 #!/bin/bash
 #SBATCH --job-name="Jupyter"                # Job name
-#SBATCH --mail-user=<sunetid>@stanford.edu  # Email address	
-#SBATCH --mail-type=NONE                    # Mail notification type (NONE, BEGIN, END, FAIL, ALL)
 #SBATCH --partition=normal                  # Node partition
 #SBATCH --nodes=1                           # Number of nodes requested
 #SBATCH --ntasks=1                          # Number of processes
@@ -173,12 +171,12 @@ compute-1-1
 
 The following is an example of port redirection to interact with the jupyter notebook on your local computer:
 ```
-ssh -L <port>:localhost:<port> [user]@hpcc-cluster-[N] -t ssh -N -L <port>:localhost:<port> <compute-node>
+ssh -L <port>:localhost:<port> [user]@cs74.stanford.edu ssh -L <port>:localhost:<port> [user]@hpcc-cluster-[N] -t ssh -N -L <port>:localhost:<port> <compute-node>
 ```
 
 For example connecting from your computer to hpcc-cluster with a Slurm job executing on compute-1-1 using port 8888 for the Jupyter notebook session:
 ```
-[user@computer $] ssh -L 8888:localhost:8888 [user]@hpcc-cluster -t ssh -N -L 8888:localhost:8888 compute-1-1
+ssh -L 8888:localhost:8888 [user]@cs74.stanford.edu  ssh -L 8888:localhost:8888 [user]@hpcc-cluster-[N] -t ssh -N -L 8888:localhost:8888 compute-1-1
 ```
 
 Once you have an active port redirection using the former step, open a browser and paste the URL:
