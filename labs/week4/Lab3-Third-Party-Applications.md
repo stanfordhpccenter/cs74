@@ -109,7 +109,7 @@ pip --version # optional: check PIP version
 
 Add bin directory PATH for Intel Python
 ```
-echo 'PATH=$PATH:/opt/ohpc/pub/compiler/intel/intelpython3/bin' >> ~/.bashrc
+echo 'PATH=/opt/ohpc/pub/compiler/intel/intelpython3/bin:$PATH' >> ~/.bashrc
 source ~/.bashrc
 ```
 
