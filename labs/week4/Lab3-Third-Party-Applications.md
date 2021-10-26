@@ -1,6 +1,6 @@
 **NOTE: All commands below are performed as a regular user on your cluster**
 
-###### Install GROMACS ######
+#### Install GROMACS
 
 Load modules
 ```
