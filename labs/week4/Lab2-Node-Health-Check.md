@@ -10,17 +10,11 @@ Modify /etc/nhc/nhc.conf similar to this:
 #
 ### Filesystem checks
 #
-* || check_fs_mount_rw -t "tmpfs" -s "tmpfs" -f "/"
-* || check_fs_mount_rw -t "proc" -s "proc" -f "/proc"
-* || check_fs_mount_rw -t "sysfs" -s "sysfs" -f "/sys"
-* || check_fs_mount_rw -t "devtmpfs" -s "devtmpfs" -f "/dev"
-* || check_fs_mount_rw -t "nfs" -s "10.1.1.1:/opt" -f "/opt"
+* || check_fs_mount_rw -t "nfs" -s "10.1.1.1:/opt/ohpc/pub" -f "/opt/ohpc/pub"
 #
 ### Hardware checks
 #
 compute-* || check_hw_ib 56
-largemem-* || check_hw_ib 56
-* || check_hw_eth eth0
 ```
 
 Import into database:
@@ -31,4 +25,9 @@ wwsh file import /etc/nhc/nhc.conf
 Update provisioning to include new files imported to database:
 ```
 wwsh -y provision set "compute-*" --vnfs=centos7 --bootstrap=`uname -r` --files=dynamic_hosts,passwd,group,shadow,network,slurm.conf,munge.key,nhc.conf
+```
+
+Reboot compute node:
+```
+ssh compute-1-1 reboot
 ```
