@@ -129,7 +129,7 @@ jupyter nbextension enable nglview --py
 ```
 
 
-##### OPTIONAL ~ Slurm script: jupyter_submit.slurm #####
+##### Slurm script: jupyter_submit.slurm #####
 
 ```
 #!/bin/bash
@@ -169,7 +169,7 @@ compute-1-1
 [I 16:44:21.601 NotebookApp]   http://localhost:8888/?token=8ce4b320473a1a9fb3536368c2e5f547c966bf7c3f9861  52
 ```
 
-##### OPTIONAL ~ Access Jupyter from local device #####
+##### Access Jupyter from local device #####
 
 The following is an example of port redirection to interact with the jupyter notebook on your local computer:
 ```
@@ -179,6 +179,76 @@ ssh -L <port>:localhost:<port> [user]@hpcc-cluster-[N] -t ssh -N -L <port>:local
 For example connecting from your computer to hpcc-cluster with a Slurm job executing on compute-1-1 using port 8888 for the Jupyter notebook session:
 ```
 [user@computer $] ssh -L 8888:localhost:8888 [user]@hpcc-cluster -t ssh -N -L 8888:localhost:8888 compute-1-1
+```
+
+Once you have an active port redirection using the former step, open a browser and paste the URL:
+```
+“http://localhost:<port>/?token=<token>”
+```
+
+For example using the output from slurm.*.out above this is the URL:
+```
+http://localhost:8888/?token=8ce4b320473a1a9fb3536368c2e5f547c966bf7c3f9861
+```
+
+Create a new notebook from "New"->"Python3"
+Rename the title
+
+Visualize molecular structure
+Type the following Python script and run
+
+```
+import nglview as nv
+view = nv.show_structure_file("confout.gro")
+view.clear()
+view.add_cartoon()
+view
+```
+##### Result visualization on cs74.stanford.edu #####
+
+Connect to cs74
+```
+ssh [user]@cs74.stanford.edu
+```
+
+Copy files to your home directory
+```
+cp -r /opt/ohpc/pub/cs74/week4 .
+```
+
+Change directory
+```
+cd ~/week4/jupyter
+```
+
+Submit job to the queue
+```
+sbatch jupyter_submit.slurm
+```
+
+Gather the data needed to use in following commands. One way to do this is the following:
+```
+egrep -w 'compute|localhost'  slurm-*.out
+```
+
+Note: You may need to wait a few minutes for data to generate from command above
+
+Output may look like this:
+```
+compute-1-1
+[I 16:44:21.601 NotebookApp]   http://localhost:8888/?token=8ce4b320473a1a9fb3536368c2e5f547c966bf7c3f9861  52
+```
+
+##### Access Jupyter on cs74 from local device #####
+
+The following is an example of port redirection to interact with the jupyter notebook on your local computer:
+```
+ssh -L <port>:localhost:<port> [user]@cs74.stanford.edu -t ssh -N -L <port>:localhost:<port> <compute-node>
+```
+
+For example connecting from your computer to cs74 with a Slurm job executing on compute-5-1 using port 8888 for the Jupyter notebook session:
+```
+ssh -L 8888:localhost:8888 [user]@cs74.stanford.edu -t ssh -N -L 8888:localhost:8888 compute-5-1
 ```
 
 Once you have an active port redirection using the former step, open a browser and paste the URL:
