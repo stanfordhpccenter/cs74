@@ -32,6 +32,14 @@ Update provisioning to include new files imported to database:
 wwsh -y provision set "compute-*" --vnfs=centos7 --bootstrap=`uname -r` --files=dynamic_hosts,passwd,group,shadow,network,slurm.conf,munge.key,nhc.conf
 ```
 
+Append the following to /etc/slurm/slurm.conf and resync to configure Slurm to automatically execute NHC Script every 5 minutes:
+```
+## NHC
+#
+HealthCheckProgram=/usr/sbin/nhc
+HealthCheckInterval=300
+```
+
 Reboot compute node:
 ```
 ssh compute-1-1 reboot
