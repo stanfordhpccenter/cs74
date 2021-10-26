@@ -178,7 +178,7 @@ ssh -L <port>:localhost:<port> [user]@hpcc-cluster-[N] -t ssh -N -L <port>:local
 
 For example connecting from your computer to hpcc-cluster with a Slurm job executing on compute-1-1 using port 8888 for the Jupyter notebook session:
 ```
-[user@computer $] ssh -L 8888:localhost:8888 [usaaer]@hpcc-cluster -t ssh -N -L 8888:localhost:8888 compute-1-1
+[user@computer $] ssh -L 8888:localhost:8888 [user]@hpcc-cluster -t ssh -N -L 8888:localhost:8888 compute-1-1
 ```
 
 Once you have an active port redirection using the former step, open a browser and paste the URL:
