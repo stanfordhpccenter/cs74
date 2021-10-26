@@ -43,7 +43,7 @@ Note the following options in the Slurm configuration ```ThreadsPerCore```, ```C
 
 By the end, this is what the end of your Slurm configuration ```(/etc/slurm/slurm.conf)``` should look like:
 ```
-NodeName=compute-[C] Sockets=2 CoresPerSocket=8 ThreadsPerCore=2 State=UNKNOWN
+NodeName=compute-1-1 Sockets=2 CoresPerSocket=8 ThreadsPerCore=2 State=UNKNOWN
 PartitionName=normal Nodes=ALL Default=YES MaxTime=24:00:00 State=UP
 ReturnToService=2
 ```
