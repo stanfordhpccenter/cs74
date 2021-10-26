@@ -15,11 +15,11 @@ Modify /etc/nhc/nhc.conf similar to this:
 #
 ### Filesystem checks
 #
-* || check_fs_mount_rw -t "nfs" -s "10.1.1.1:/opt/ohpc/pub" -f "/opt/ohpc/pub"
+compute-* || check_fs_mount_rw -t "nfs" -s "10.1.1.1:/opt/ohpc/pub" -f "/opt/ohpc/pub"
 #
 ### Hardware checks
 #
-compute-* || check_hw_ib 56
+* || check_hw_ib 56
 ```
 
 Import into database:
