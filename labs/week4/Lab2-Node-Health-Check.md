@@ -4,6 +4,11 @@ yum -y install nhc-ohpc
 yum -y --installroot=$CHROOT install nhc-ohpc
 ```
 
+Reassemble VNFS image
+```
+wwvnfs --chroot=$CHROOT
+```
+
 Modify /etc/nhc/nhc.conf similar to this:
 ```
 # NHC Configuration File (sample)
