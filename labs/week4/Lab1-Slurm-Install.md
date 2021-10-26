@@ -47,7 +47,9 @@ NodeName=compute-[C] Sockets=2 CoresPerSocket=8 ThreadsPerCore=2 State=UNKNOWN
 PartitionName=normal Nodes=ALL Default=YES MaxTime=24:00:00 State=UP
 ReturnToService=2
 ```
-Hint: ```Nodes=ALL``` is case insensitive — you must format it this way or it will not work. You can add memory checks to the ```NodeName``` line similar to this ```RealMemory=32000```
+Hint: ```Nodes=ALL``` is case insensitive — you must format it this way or it will not work.
+
+Note: You can add memory checks to the ```NodeName``` line similar to this ```RealMemory=32000```
 
 Start and enable Slurm and Munge:
 ```
