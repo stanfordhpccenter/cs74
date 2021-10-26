@@ -153,7 +153,7 @@ sbatch jupyter_submit.slurm
 
 Check job
 ```
-squeue -u <sunet_id> # note the job ID
+squeue -u [username] # note the job ID
 ```
 
 Gather the data needed to use in following commands. One way to do this is the following:
@@ -171,12 +171,12 @@ compute-1-1
 
 The following is an example of port redirection to interact with the jupyter notebook on your local computer:
 ```
-ssh -L <port>:localhost:<port> <sunetid>@<cluster-name> -t ssh -N -L <port>:localhost:<port> <compute-node>
+ssh -L <port>:localhost:<port> [user]@hpcc-cluster-[N] -t ssh -N -L <port>:localhost:<port> <compute-node>
 ```
 
-For example connecting from your computer to me344-cluster with a Slurm job executing on compute-1-1 using port 8888 for the Jupyter notebook session:
+For example connecting from your computer to hpcc-cluster with a Slurm job executing on compute-1-1 using port 8888 for the Jupyter notebook session:
 ```
-[user@computer $] ssh -L 8888:localhost:8888 sunetid@me344-cluster -t ssh -N -L 8888:localhost:8888 compute-1-1
+[user@computer $] ssh -L 8888:localhost:8888 [usaaer]@hpcc-cluster -t ssh -N -L 8888:localhost:8888 compute-1-1
 ```
 
 Once you have an active port redirection using the former step, open a browser and paste the URL:
