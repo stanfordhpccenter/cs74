@@ -10,7 +10,7 @@ ml pmix cmake gnu8 intel/19.1.3.304 impi
 
 Optional: check modules
 ```
-ml # equivalent as “module list”
+ml
 ```
 
 Optional: check MPI-C and MPI-CXX compiler binding
