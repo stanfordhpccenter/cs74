@@ -76,8 +76,18 @@ This is what you should see as the prompt:
 Singularity julia.img:~/container-example>
 ```
 
-Run ```julia calc_pi.jl``` and you should see an estimate of pi as the output. Exit the container with `^D`.
----
+Run the following:
+```
+julia calc_pi.jl
+```
+
+You should see an estimate of pi as the output:
+```
+Singularity julia.img:~/container-example> julia calc_pi.jl
+3.1516
+```
+
+Exit the container with `^D`.
 
 ### Integrating Slurm into Containers
 
