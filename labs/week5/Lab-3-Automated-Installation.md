@@ -1,7 +1,8 @@
 ## Guide to Automated OpenHPC Install
-#### Stanford High Performance Computing Center
 
-1. Connect to the master node (default password is `stanford`):
+[C] is your cluster number. For example, if you are configuring cluster 10, replace [C] with 10. 
+
+1. Connect to your master node (default password is `stanford`):
 ```
 ssh root@hpcc-cluster-[C].stanford.edu
 ```
@@ -10,57 +11,61 @@ ssh root@hpcc-cluster-[C].stanford.edu
 ```
 perl -pi -e "s/SELINUX=enforcing/SELINUX=disabled/" /etc/selinux/config
 ```
+
 3. Reboot the machine:
+
+Note: Your connection to the cluster will end, and you need to wait a few minutes while the cluster reboot before you can re-connect. 
 ```
 reboot
 ```
+
 4. Once rebooted, connect through SSH and verify that SELinux is disabled:
 ```
+ssh root@hpcc-cluster-[C]
+
 sestatus
 ```
 
-### The below section can be further automated
-5. Disable the firewall service
+5. Retrieve the recipe script:
 ```
-systemctl stop firewalld
-systemctl disable firewalld
+cd /
+wget https://raw.githubusercontent.com/davidrbradshaw/HPCC/master/CS74/recipe.sh
 ```
-6. Add kernel pacakges:
-```
-yum -y install http://vault.centos.org/7.7.1908/os/x86_64/Packages/kernel-debug-3.10.0-1062.el7.x86_64.rpm
-yum -y install http://vault.centos.org/7.7.1908/os/x86_64/Packages/kernel-debug-devel-3.10.0-1062.el7.x86_64.rpm
-```
-7. Lock kernel version:
-```
-yum -y install yum-plugin-versionlock 
-yum versionlock *-3.10.0-1062.el7.x86_64
-```
-8. Install the repository for OpenHPC
-```
-yum -y install http://build.openhpc.community/OpenHPC:/1.3/CentOS_7/x86_64/ohpc-release-1.3-1.el7.x86_64.rpm 
-```
-9. Install the docs-ohpc package:
-```
-yum -y install docs-ohpc
-```
-10. Copy the provided template input file to use as a starting point to define local site settings:
-```
-cp -p /opt/ohpc/pub/doc/recipes/centos7/input.local input.local
-```
-11. Edit input.local with a text editor to the desired settings
 
-12. Copy the template installations script, DRAFT:
+6. Retrieve the input.local file and edit it to your system's settings:
 ```
-wget ... github.com/davidrbradshaw ... recipe.sh
+wget https://raw.githubusercontent.com/davidrbradshaw/HPCC/master/CS74/input.local
+
+nano input.local
 ```
-13. Use environment variable to define local input file:
+
+7. Use environment variable to define local input file:
 ```
 export OHPC_INPUT_LOCAL=./input.local
 ```
-14. Open access to the installation file:
+
+8. Open access to the installation file:
 ```
 chmod u+r+x recipe.sh
 ```
-15. Run the local installation
+
+9. Run the local installation:
 ```
-./recipe.sh
+nohup ./recipe.sh
+```
+
+10. Run this command for the compute node. If pinging (step 11) doesn't work after a few minutes, run this command again.
+```
+ipmitool -H 10.2.2.2 -U USERID -P PASSW0RD chassis power cycle
+```
+
+11. To verify that the compute nodes have booted, you can ping their hostname, i.e:
+```ping compute-1-1```
+
+The output should resemble this:
+```
+PING compute-1-12.localdomain (10.1.12.2) 56(84) bytes of data.
+64 bytes from compute-1-1.localdomain (10.1.12.2): icmp_seq=1 ttl=64 time=0.244 ms
+64 bytes from compute-1-1.localdomain (10.1.12.2): icmp_seq=2 ttl=64 time=0.257 ms
+64 bytes from compute-1-1.localdomain (10.1.12.2): icmp_seq=3 ttl=64 time=0.253 ms
+```
