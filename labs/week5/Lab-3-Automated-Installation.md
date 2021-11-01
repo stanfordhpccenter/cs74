@@ -32,34 +32,37 @@ cd /
 wget https://raw.githubusercontent.com/davidrbradshaw/HPCC/master/CS74/recipe.sh
 ```
 
-6. Retrieve the input.local file and edit it to your system's settings:
+6. Retrieve the input.local file:
 ```
 wget https://raw.githubusercontent.com/davidrbradshaw/HPCC/master/CS74/input.local
+```
 
+7. Revise the input file to suit your system's settings:
+```
 nano input.local
 ```
 
-7. Use environment variable to define local input file:
+8. Use environment variable to define local input file:
 ```
 export OHPC_INPUT_LOCAL=./input.local
 ```
 
-8. Open access to the installation file:
+9. Open access to the installation file:
 ```
 chmod u+r+x recipe.sh
 ```
 
-9. Run the local installation:
+10. Run the local installation:
 ```
 nohup ./recipe.sh
 ```
 
-10. Run this command for the compute node. If pinging (step 11) doesn't work after a few minutes, run this command again.
+11. Run this command for the compute node. If pinging (step 11) doesn't work after a few minutes, run this command again.
 ```
 ipmitool -H 10.2.2.2 -U USERID -P PASSW0RD chassis power cycle
 ```
 
-11. To verify that the compute nodes have booted, you can ping their hostname, i.e:
+12. To verify that the compute nodes have booted, you can ping their hostname, i.e:
 ```ping compute-1-1```
 
 The output should resemble this:
