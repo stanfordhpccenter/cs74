@@ -1,4 +1,4 @@
-First install Charlieclooud and Singularity from the OpenHPC repository as this includes module support:
+First install Charliecloud and Singularity from the OpenHPC repository as this includes module support:
 ```
 yum -y install charliecloud-ohpc singularity-ohpc
 ```
