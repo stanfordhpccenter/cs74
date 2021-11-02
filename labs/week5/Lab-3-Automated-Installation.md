@@ -52,9 +52,9 @@ export OHPC_INPUT_LOCAL=./input.local
 chmod u+r+x recipe.sh
 ```
 
-10. Run the local installation:
+10. Run the local installation, which will take a while. Alternatively, you can use nohup to ensure the installation doesn't terminate if your session accidentally ends ```nohup ./recipe.sh &```:
 ```
-nohup ./recipe.sh
+./recipe.sh
 ```
 
 11. Run this command for the compute node. If pinging (step 11) doesn't work after a few minutes, run this command again.
