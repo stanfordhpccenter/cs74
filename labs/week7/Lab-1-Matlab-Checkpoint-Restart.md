@@ -8,9 +8,9 @@ Copy the week7 files to your home directory
 $ cp -r /opt/ohpc/pub/cs74/week7 ~/.
 ```
 
-Change to the week 7 directory
+Change to the week 7 Matlab checkpoint directory
 ```
-$ cd ~/week7
+$ cd ~/week7/matlab/checkpoint
 ```
 
 Start an interactive Slurm session
@@ -50,6 +50,6 @@ Continue the program using the Restart file
 $ test_restart
 ```
 
-The output should continue from the last checkpoint data save location continuing to interation 50. Press ```Enter``` to continue, type ```quit``` to exit Matlab.
+The output should continue from the last checkpoint data save location continuing to interation 50. Press ```Enter``` to continue, type ```quit``` to exit Matlab, and ```exit``` to end your interactive Slurm session.
 
 You can view the README in the same directory where your Matlab files are located (~week6/matlab/checkpoint/) or here on github in the week 7 lab directory. 
