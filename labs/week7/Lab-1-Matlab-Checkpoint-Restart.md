@@ -3,6 +3,16 @@ Connect to the CS74 cluster
 $ ssh user@cs74.stanford.edu
 ```
 
+Copy the week7 files to your home directory
+```
+$ cp -r /opt/ohpc/pub/cs74/week7 ~/.
+```
+
+Change to the week 7 directory
+```
+$ cd ~/week7
+```
+
 Start an interactive Slurm session
 ```
 $ srun --pty bash
