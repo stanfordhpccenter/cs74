@@ -1,4 +1,4 @@
-## Guide to Automated Cluster Configuration.
+## Guide to Automated Cluster Configuration
 
 [C] is your cluster number. For example, if you are configuring cluster 10, replace [C] with 10. 
 
