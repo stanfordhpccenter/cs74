@@ -1,6 +1,8 @@
-## Guide to Automated OpenHPC Install
+## Guide to Automated Cluster Configuration.
 
 [C] is your cluster number. For example, if you are configuring cluster 10, replace [C] with 10. 
+
+0. Remember to configure your master node prior to the following steps. You should reference the lab from week1.
 
 1. Connect to your master node (default password is `stanford`):
 ```
