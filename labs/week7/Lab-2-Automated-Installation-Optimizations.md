@@ -44,14 +44,14 @@ nano input.local
 
 8. Add Infiniband, Charliecloud, and Singularity to the automated installation file recipe.sh
 
-Add the following to the master node section following ```yum -y install ohpc-warewulf```
+Add the following to the master node section following ```"yum -y install ohpc-warewulf"```
 ```
 yum -y install singularity-ohpc charliecloud-ohpc
 yum -y groupinstall "InfiniBand Support"
 systemctl enable opensm
 ```
 
-Add the following to the compute node section following ```wwsh file import /etc/munge/munge.key```
+Add the following to the compute node section following ```"wwsh file import /etc/munge/munge.key"```
 ```
 yum -y --installroot=$CHROOT groupinstall "InfiniBand Support"
 ```
