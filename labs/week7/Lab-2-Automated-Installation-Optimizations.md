@@ -71,7 +71,7 @@ chmod u+r+x recipe.sh
 ./recipe.sh
 ```
 
-12. Run this command for the compute node. If pinging (step 11) doesn't work after a few minutes, run this command again.
+12. Run this command for the compute node. If pinging (step 13) doesn't work after a few minutes, run this command again.
 ```
 ipmitool -H 10.2.2.2 -U USERID -P PASSW0RD chassis power cycle
 ```
