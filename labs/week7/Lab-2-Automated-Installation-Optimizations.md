@@ -1,5 +1,7 @@
 ## Guide to Automated Cluster Configuration
 
+Please remember to carry out this assignment on your secondary cluster. If you don't have one, message Steve to assign you one.
+
 [C] is your cluster number. For example, if you are configuring cluster 10, replace [C] with 10. 
 
 0. Remember to apply the correct configurations to your master node that are needed prior to the following steps. You should reference the lab from week1.
