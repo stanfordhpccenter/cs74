@@ -2,7 +2,7 @@
 
 [C] is your cluster number. For example, if you are configuring cluster 10, replace [C] with 10. 
 
-0. Remember to configure your master node prior to the following steps. You should reference the lab from week1.
+0. Remember to apply the correct configurations to your master node that are needed prior to the following steps. You should reference the lab from week1.
 
 1. Connect to your master node (default password is `stanford`):
 ```
