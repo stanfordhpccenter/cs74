@@ -48,6 +48,7 @@ Add the following to the master node section following ```"yum -y install ohpc-w
 ```
 yum -y install singularity-ohpc charliecloud-ohpc
 yum -y groupinstall "InfiniBand Support"
+yum -y install opensm
 systemctl enable opensm
 ```
 
