@@ -28,7 +28,6 @@ sestatus
 
 5. Retrieve the recipe script:
 ```
-cd /
 wget https://raw.githubusercontent.com/davidrbradshaw/HPCC/master/CS74/recipe.sh
 ```
 
@@ -44,7 +43,7 @@ nano input.local
 
 8. Use environment variable to define local input file:
 ```
-export OHPC_INPUT_LOCAL=./input.local
+export OHPC_INPUT_LOCAL=/root/input.local
 ```
 
 9. Open access to the installation file:
