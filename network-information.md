@@ -4,7 +4,7 @@
 |                     | **compute-1-1**  | 10.2.2.2             | 40:f2:e9:02:48:b8 | 10.10.1.1
 | **hpcc-cluster-2**  |                  | hpcc-cluster-2-ipmi  | 34:40:b5:b9:4e:78 | 171.64.55.133
 |                     | **compute-1-1**  | 10.2.2.2             | 34:40:B5:B9:40:37 | 10.10.1.1
-| **hpcc-cluster-3**  |                  | hpcc-cluster-3-ipmi  | 34:40:b5:b9:4e:78 | 171.64.55.135
+| **hpcc-cluster-3**  |                  | hpcc-cluster-3-ipmi  | 34:40:b5:ba:21:82 | 171.64.55.135
 |                     | **compute-1-1**  | 10.2.2.2             | 34:40:B5:B9:9d:8c | 10.10.1.1
 | **hpcc-cluster-4**  |                  | hpcc-cluster-4-ipmi  | 34:40:b5:ba:21:ab | 171.64.55.137
 |                     | **compute-1-1**  | 10.2.2.2             | 34:40:B5:B9:7d:1b | 10.10.1.1
