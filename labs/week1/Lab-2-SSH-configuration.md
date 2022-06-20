@@ -118,9 +118,9 @@ You likely won't receive a response after entering the password.
 
 Run the following, replacing [username] with your SUNetID:
 
-ssh-copy-id [username]@me344.stanford.edu
+ssh-copy-id -i id_rsa.pub [username]@me344.stanford.edu
 ```
-~$ ssh-copy-id [username]@me344.stanford.edu
+~$ ssh-copy-id -i id_rsa.pub [username]@me344.stanford.edu
 ```
 
 You will get a warning like this. If you entered the server address correctly, you're fine.
