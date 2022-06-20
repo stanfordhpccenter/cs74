@@ -36,6 +36,7 @@ nano myscript
 ```
 #!/bin/sh
 #SBATCH --time=1
+hostname
 echo $HOME
 ```
 
@@ -43,3 +44,21 @@ echo $HOME
   You'll be asked whether to save a modified buffer. Type in yes and press enter.
   You'll be asked what file name to write. The current file name should be there by default. Press the enter key.
 
+4. Submit the script to Slurm for execution on a compute node:
+
+```
+sbatch myscript
+```
+
+5. View the output from the script that was executed on a compute node:
+
+```
+cat slurm*
+```
+
+The output should look similar to the following:
+
+```
+compute-0-3
+/home/sunetid
+```
