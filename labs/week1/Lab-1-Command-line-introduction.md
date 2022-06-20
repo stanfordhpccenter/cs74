@@ -62,3 +62,9 @@ The output should look similar to the following:
 compute-0-3
 /home/sunetid
 ```
+
+6. To exit from your session type the following:
+
+```
+exit
+```
