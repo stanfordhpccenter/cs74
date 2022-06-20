@@ -83,15 +83,15 @@ Revise this by adding quotation marks:
 
 ***
 
-Run the following (in one line), replacing [username] with your HPCC username, which we're providing. This sends a copy of your public key to the remote server:
+Run the following (in one line), replacing [username] with your SUNetID. This sends a copy of your public key to the remote server:
 
 ```
-cat ~/.ssh/id_rsa.pub | ssh [username]@cs74.stanford.edu "mkdir -p ~/.ssh && cat >> ~/.ssh/authorized_keys"
+cat ~/.ssh/id_rsa.pub | ssh [username]@me344.stanford.edu "mkdir -p ~/.ssh && cat >> ~/.ssh/authorized_keys"
 ```
 
 After you copy the SSH public key to the server, you will see a warning like this:
 ```
-The authenticity of host 'cs74 (171.64.55.130)' can't be established.
+The authenticity of host 'me344 (171.64.55.130)' can't be established.
 ECDSA key fingerprint is SHA256:20rcvjngfjkrjjank45436tkjfhsdkfsdHjosfjJhk.
 Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
 ```
@@ -100,14 +100,14 @@ Type _yes_ and press the enter key.
 
 You'll receive a response like this:
 ```
-Warning: Permanently added 'cs74,171.64.55.130' (ECDSA) to list of hosts
+Warning: Permanently added 'me344,171.64.55.130' (ECDSA) to list of hosts
 ```
 
-You'll be prompted for your HPCC password, which we're providing.
+You'll be prompted for your SUNet password.
 Type your password and press enter.
 **NOTE** Your keystrokes will not appear on the screen.
 ```
-[user]@cs74.stanford.edu's password:
+[user]@me344.stanford.edu's password:
 ```
 
 You likely won't receive a response after entering the password.
@@ -116,11 +116,11 @@ You likely won't receive a response after entering the password.
 
 **2B: ONLY For MacOS & Linux Users - Copy the SSH Public Key to the Server**
 
-Run the following, replacing [username] with your HPCC username, which we're providing:
+Run the following, replacing [username] with your SUNetID:
 
-ssh-copy-id [username]@cs74.stanford.edu
+ssh-copy-id [username]@me344.stanford.edu
 ```
-~$ ssh-copy-id davidron@cs74.stanford.edu
+~$ ssh-copy-id [username]@me344.stanford.edu
 ```
 
 You will get a warning like this. If you entered the server address correctly, you're fine.
@@ -128,7 +128,7 @@ Type **yes** and press the enter key.
 
 ```
 /usr/bin/ssh-copy-id: INFO: Source of key(s): "/home/kali/.ssh/id_rsa.pub"
-The authenticity of host 'cs74 (171.64.55.130)' can't be established.
+The authenticity of host 'me344 (171.64.55.130)' can't be established.
 ECDSA key fingerprint is SHA256:20crZ5XWQNxMgW0BZo3mE97j7z2ThNoULDzVeUAVeCg.
 Are you sure you want to continue connecting (yes/no/[fingerprint]) yes?
 ```
@@ -141,11 +141,11 @@ out any that are already installed
 prompted now it is to install new keys
 ```
 
-You'll be prompted for your HPCC password, which we're providing.
+You'll be prompted for your SUNet password.
 Type your password and press enter.
 Note: Your keystrokes will not appear on the screen.
 ```
-davidron@cs74.stanford.edu's password:
+sunetid@me344.stanford.edu's password:
 ```
 
 You'll receive a response like this:
@@ -157,14 +157,14 @@ Number of key(s) added: 1
 
 **3: Test SSH Key Authentication**
 
-Run the following, replacing _[your username]_ with your HPCC username, which we're providing:
+Run the following, replacing _[your username]_ with your SUNetID:
 
 ```
-ssh [your username]@cs74.stanford.edu
+ssh [your username]@me344.stanford.edu
 ```
 
 If SSH key authentication worked, you should get a response like this:
 ```
 Last login: Thu Jul 15 20:11:39 2021 from dn2lk5ehf.stanford.edu
-[davidron@cs74 ~]$
+sunetid@me344 ~]$
 ```
