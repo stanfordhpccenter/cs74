@@ -10,7 +10,11 @@ You can start Terminal from the Finder app or double click it from the Applicati
 
 If you're running Windows, depending on your OS version and preference, you can use Windows PowerShell or Windows Terminal. 
 
-If you get an error message stating that SSH is not recognized on PowerShell, run ```Add-WindowsCapability -Online -Name OpenSSH.Client*```
+If you get an error message stating that SSH is not recognized on PowerShell, run
+
+```
+Add-WindowsCapability -Online -Name OpenSSH.Client*
+```
 
 ### Linux OS distributions
 
@@ -22,10 +26,10 @@ Most Linux distributions come with SSH in their terminal apps.
 
 On your local computer, start MacOS Terminal, Windows PowerShell, or your Linux terminal of choice.
 
-Run ssh-keygen.
+Run the SSH Key generation utility:
 
 ```
-PS c:\Users\User Name> ssh-keygen
+ssh-keygen
 ```
 
 This output should follow:
