@@ -38,7 +38,7 @@ cmake .. -DGMX_FFT_LIBRARY=mkl -DMKL_LIBRARIES=-mkl \
         -DBUILD_SHARED_LIBS=off \
         -DGMX_HWLOC=off \
         -DCMAKE_INSTALL_PREFIX=../install \
-        -DCMAKE_C_COMPILER=mpicc -DCMAKE_CXX_COMPILER=mpicxx
+        -DCMAKE_C_COMPILER=mpiicc -DCMAKE_CXX_COMPILER=mpiicpc
 
 make -j 4
 make install
